@@ -31,24 +31,24 @@ models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained mod
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
 src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
 ├── __init__.py  
-├── config/   
+├── config/  
 │   ├── config.yaml  
 │   ├── preprocessing.yaml  
 │   ├── training.yaml  
 │   └── inference.yaml  
-├── data/   
+├── data/  
 │   └── preprocessing.py  
 ├── models/  
 │   └── model.py  
-├── training/   
+├── training/  
 │   ├── train.py  
 │   └── evaluate.py  
 ├── inference/  
 │   └── infer.py  
-├── utils/   
-│   └── utils.py   
-└── main.py       
-tests/       
+├── utils/  
+│   └── utils.py  
+└── main.py  
+tests/  
 
  
 # Requirements
