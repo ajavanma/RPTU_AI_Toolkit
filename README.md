@@ -32,21 +32,21 @@ notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and
 src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
 | ── __init__.py  
 | ── config/  
-│     &nbsp;   &nbsp;   |── config.yaml  
-│     &nbsp;   &nbsp;   |── preprocessing.yaml  
-│     &nbsp;   &nbsp;   |── training.yaml  
-│     &nbsp;   &nbsp;   └── inference.yaml  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── config.yaml  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── preprocessing.yaml  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── training.yaml  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── inference.yaml  
 | ── data/  
-│     &nbsp;   &nbsp;   └── preprocessing.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── preprocessing.py  
 | ── models/  
-│     &nbsp;   &nbsp;   └── model.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── model.py  
 | ── training/  
-│     &nbsp;   &nbsp;   |── train.py  
-│     &nbsp;   &nbsp;   └── evaluate.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── train.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── evaluate.py  
 | ── inference/  
-│     &nbsp;   &nbsp;   └── infer.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── infer.py  
 | ── utils/  
-│     &nbsp;   &nbsp;   └── utils.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── utils.py  
 └ ── main.py  
 tests/  
 
