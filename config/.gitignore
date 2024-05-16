@@ -1,0 +1,22 @@
+# macOS system files
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disks
+.Trashes
+
+# VSCode files
+.vscode/
+*.code-workspace
+
+# Build output
+*.app
+*.ipa
+*.dmg
+
+# Project specific
+.ply
+.pcd
+
