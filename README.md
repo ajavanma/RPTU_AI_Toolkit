@@ -25,30 +25,30 @@ conda activate mink
 python main.py   
 
 # File hierarchy
-data/         # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)
-logs/         # Logs and reports
-models/       # Trained models
-notebooks/    # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)
-src/          # Source code
-    ├── __init__.py
-    ├── config/          # Configuration files for Hydra
-    │   ├── config.yaml
-    │   ├── preprocessing.yaml
-    │   ├── training.yaml
-    │   └── inference.yaml
-    ├── data/            # Data processing scripts
-    │   └── preprocessing.py
-    ├── models/          # Model definitions and architectures
-    │   └── model.py
-    ├── training/        # Training and evaluation scripts
-    │   ├── train.py
-    │   └── evaluate.py
-    ├── inference/       # Inference scripts
-    │   └── infer.py
-    ├── utils/           # Utility functions
-    │   └── utils.py
-    └── main.py          # Main entry point for the application
-tests/        # Unit and integration tests
+data/         # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
+logs/         # Logs and reports  
+models/       # Trained models  
+notebooks/    # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
+src/          # Source code  
+    ├── __init__.py  
+    ├── config/          # Configuration files for Hydra  
+    │   ├── config.yaml  
+    │   ├── preprocessing.yaml  
+    │   ├── training.yaml  
+    │   └── inference.yaml  
+    ├── data/            # Data processing scripts  
+    │   └── preprocessing.py  
+    ├── models/          # Model definitions and architectures  
+    │   └── model.py  
+    ├── training/        # Training and evaluation scripts  
+    │   ├── train.py  
+    │   └── evaluate.py   
+    ├── inference/       # Inference scripts  
+    │   └── infer.py  
+    ├── utils/           # Utility functions  
+    │   └── utils.py  
+    └── main.py          # Main entry point for the application  
+tests/        # Unit and integration tests  
  
 
 # Requirements
