@@ -66,11 +66,9 @@
     <img src="media/column.png" alt="Logo" width="490" height="275">
   </a>
     <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/door_1.png" alt="Logo" width="490" height="275">
+    <img src="media/door.png" alt="Logo" width="490" height="275">
   </a>
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/door_2.png" alt="Logo" width="490" height="275">
-  </a>
+
 
 
 
