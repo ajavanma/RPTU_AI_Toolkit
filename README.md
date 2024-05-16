@@ -25,30 +25,30 @@ conda activate mink
 python main.py   
 
 # File hierarchy
-data/         # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
-logs/         # Logs and reports  
-models/       # Trained models  
-notebooks/    # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
-src/          # Source code  
+data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   &nbsp;   # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
+logs/  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; &nbsp;   &nbsp;   &nbsp;  &nbsp;     # Logs and reports  
+models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
+notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
+src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
     ├── __init__.py  
-    ├── config/          # Configuration files for Hydra  
+    ├── config/       
     │   ├── config.yaml  
     │   ├── preprocessing.yaml  
     │   ├── training.yaml  
     │   └── inference.yaml  
-    ├── data/            # Data processing scripts  
+    ├── data/   
     │   └── preprocessing.py  
-    ├── models/          # Model definitions and architectures  
+    ├── models/        
     │   └── model.py  
-    ├── training/        # Training and evaluation scripts  
+    ├── training/       
     │   ├── train.py  
     │   └── evaluate.py  
-    ├── inference/       # Inference scripts  
+    ├── inference/     
     │   └── infer.py  
-    ├── utils/           # Utility functions  
+    ├── utils/       
     │   └── utils.py  
-    └── main.py          # Main entry point for the application  
-tests/        # Unit and integration tests  
+    └── main.py       
+tests/       
 
  
 # Requirements
