@@ -42,15 +42,15 @@ src/          # Source code
     │   └── model.py  
     ├── training/        # Training and evaluation scripts  
     │   ├── train.py  
-    │   └── evaluate.py   
+    │   └── evaluate.py  
     ├── inference/       # Inference scripts  
     │   └── infer.py  
     ├── utils/           # Utility functions  
     │   └── utils.py  
     └── main.py          # Main entry point for the application  
 tests/        # Unit and integration tests  
- 
 
+ 
 # Requirements
 MinkowskiEngine: calculation of sparse tensors  
 o3d: manipulation of points (coords), colors and normals  
