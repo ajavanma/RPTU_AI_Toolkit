@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/rptu-logo.png" alt="Logo" width="327" height="184">
+    <img src="media/rptu-logo.png" alt="Logo" width="490" height="275">
   </a>
 
   <h3 align="center">RPTU-AI-Toolkit</h3>
