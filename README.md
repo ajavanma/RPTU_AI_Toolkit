@@ -209,9 +209,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 
-[![Arash Javanmardi]](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
+[Arash Javanmardi](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
 
-[![Useful Links]](https://github.com/ajavanma/RPTU_AI_Toolkit)
+[Useful Links](https://github.com/ajavanma/RPTU_AI_Toolkit)
 
 
 
