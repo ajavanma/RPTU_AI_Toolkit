@@ -29,7 +29,7 @@ data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   
 logs/  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; &nbsp;   &nbsp;   &nbsp;  &nbsp;     # Logs and reports  
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
-src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
+src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
     ├── __init__.py  
     ├── config/       
     │   ├── config.yaml  
@@ -54,7 +54,6 @@ tests/
 # Requirements
 MinkowskiEngine: calculation of sparse tensors  
 o3d: manipulation of points (coords), colors and normals  
-PyTorch Lightning: high level pytorch framework    
 
 # Program structure
 Data Preparation
