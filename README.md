@@ -63,7 +63,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Screen Shot][product-screenshot]](https://example.com)
 
 
 
@@ -80,7 +80,7 @@
 
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/o3d.png" alt="Logo" width="112" height="112">
+    <img src="media/o3d.png" alt="Logo" width="85" height="85">
   </a>
 
 
@@ -88,19 +88,35 @@
 
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+1. Create and activate a conda environment:
+   ```sh
+   conda create --name mink python=3.8
+   conda activate mink
+
+2. Install Poetry:
+   ```sh
+   curl -sSL https://install.python-poetry.org | python3 -
+
+3. Install project dependencies:
+poetry install
+
+4. Set config parameters in config/config.yaml file
+
+5. poetry run python src/main.py
+
+
+set config parameters in config.yaml file   
+conda activate mink  
+python main.py  
+
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+MinkowskiEngine: calculation of sparse tensors  
+
+o3d: manipulation of points (coords), colors and normals 
 
 ### Installation
 
@@ -237,28 +253,6 @@ Use this space to list resources you find helpful and would like to give credit 
 # RPTU AI Toolkit
 A toolkit for preprocessing, training and inference
 
-## Getting Started
-
-1. Create and activate a conda environment:
-   ```sh
-   conda create --name mink python=3.8
-   conda activate mink
-
-2. Install Poetry:
-   ```sh
-   curl -sSL https://install.python-poetry.org | python3 -
-
-3. Install project dependencies:
-poetry install
-
-4. Set config parameters in config/config.yaml file
-
-5. poetry run python src/main.py
-
-
-set config parameters in config.yaml file   
-conda activate mink  
-python main.py   
 
 # File hierarchy
 data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   &nbsp;   # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
@@ -286,10 +280,6 @@ src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;  
 └ ── main.py  
 tests/  
 
- 
-# Requirements
-MinkowskiEngine: calculation of sparse tensors  
-o3d: manipulation of points (coords), colors and normals  
 
 # Program structure
 Data Preparation
