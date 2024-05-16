@@ -75,13 +75,12 @@
 
 
 * [![PyTorch][PyTorch]][PyTorch-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
+* [![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
+
 
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/o3d.png" alt="Logo" width="225" height="225">
+    <img src="media/o3d.png" alt="Logo" width="112" height="112">
   </a>
 
 
@@ -221,8 +220,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [product-screenshot]: images/screenshot.png
 [PyTorch]: https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white
 [PyTorch-url]: https://pytorch.org/
-[O3d]: 
-[O3d-url]: https://www.open3d.org/
 [MinkowskiEngine]: https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white
 [MinkowskiEngine-url]: https://github.com/NVIDIA/MinkowskiEngine
 
