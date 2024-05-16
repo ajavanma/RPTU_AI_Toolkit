@@ -30,24 +30,24 @@ logs/  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; &nbsp;   &nbsp;   &nbsp;  &nbs
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
 src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
-    ├── __init__.py  
-    ├── config/       
-    │   ├── config.yaml  
-    │   ├── preprocessing.yaml  
-    │   ├── training.yaml  
-    │   └── inference.yaml  
-    ├── data/   
-    │   └── preprocessing.py  
-    ├── models/        
-    │   └── model.py  
-    ├── training/       
-    │   ├── train.py  
-    │   └── evaluate.py  
-    ├── inference/     
-    │   └── infer.py  
-    ├── utils/       
-    │   └── utils.py  
-    └── main.py       
+├── __init__.py  
+├── config/   
+│   ├── config.yaml  
+│   ├── preprocessing.yaml  
+│   ├── training.yaml  
+│   └── inference.yaml  
+├── data/   
+│   └── preprocessing.py  
+├── models/  
+│   └── model.py  
+├── training/   
+│   ├── train.py  
+│   └── evaluate.py  
+├── inference/  
+│   └── infer.py  
+├── utils/   
+│   └── utils.py   
+└── main.py       
 tests/       
 
  
