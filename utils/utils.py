@@ -75,7 +75,7 @@ def mp(mapper_dict: dict, entry: int) -> tuple:
 
 # return a point cloud object
 def out_pcd(coords: np.ndarray, colors: np.ndarray) -> o3d.geometry.PointCloud:
-    r"""
+    """
     Point cloud from numpy arrays of shape (n, 3)
     Args:
         coords: Numpy array of shape (n, 3) with 3D coordinates of points
@@ -169,14 +169,6 @@ def calculate_metrics(all_preds, all_labels):
     }
 
 
-# # Split the dataset into training and validation sets
-#from torch.utils.data import random_split
-# train_size = int(0.8 * len(train_dataset))
-# val_size = len(train_dataset) - train_size
-# train_dataset, val_dataset = random_split(train_dataset, [train_size, val_size])
-
-#TODO: this function is for inference, not training; move instead of copying
-
 # Split PCD files into training, validation, and test datasets, along with their corresponding ASC files.
 def split_data(paths, ratios, shuffle, random_seed):
     # Ensure the ratios add up to 1.0
@@ -212,18 +204,6 @@ def split_data(paths, ratios, shuffle, random_seed):
 
         logger.info("Copied %s %s .pcd files to %s", num_data[dst_key], dst_key, dst_pcd_path)
         logger.info("Copied %s corresponding %s .asc files to %s", num_data[dst_key], dst_key, dst_asc_path)
-
-    # # ply files in this format are not cmpatible mit minkowski, overall ply files are not good for input, they are 3d shapes
-    # as input use numpy array or tensor   
-    def save_processed_ply(self):
-        # Create a PLY element and PLY data
-        vertex_element = PlyElement.describe(self.feature_arr, 'vertex')
-        ply_data = PlyData([vertex_element], text=True)
-
-        # self.base_file_name__processed.ply
-        processed_ply_file = os.path.join(preprocessed_data_dir, f"{self.base_file_name}_processed.ply")
-        # o3d.io.write_point_cloud(processed_ply_file, self.down_pcd, write_asc=True)
-        ply_data.write(processed_ply_file)
 
 
 # minkowski compatible array:
