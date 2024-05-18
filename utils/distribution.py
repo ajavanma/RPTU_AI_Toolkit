@@ -10,9 +10,9 @@ import numpy as np
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('your_dataset.csv')
+data = pd.read_csv('raw_file.csv')
 
-column = data['your_column_name']
+column = data['x']
 
 skewness = column.skew()
 kurtosis = column.kurt()
