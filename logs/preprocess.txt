@@ -1,0 +1,751 @@
+09:31:46,170 preprocess_minkowski INFO [34mpreprocessing...
+09:36:18,551 preprocess_minkowski INFO [34m preprocessing...[0m
+09:46:37,908 preprocess_minkowski INFO [34m preprocessing...[0m
+10:03:30,502 preprocess_minkowski INFO [34m preprocessing...[0m
+10:13:33,877 preprocess_minkowski INFO [34m preprocessing...[0m
+10:25:27,496 preprocess_minkowski INFO [34m preprocessing...[0m
+10:26:44,198 preprocess_minkowski INFO [34m preprocessing...[0m
+10:26:53,837 preprocess_minkowski INFO [34m preprocessing...[0m
+10:40:55,48 preprocess_minkowski INFO [34m preprocessing...[0m
+10:42:47,310 preprocess_minkowski INFO [34m preprocessing...[0m
+10:46:04,376 preprocess_minkowski INFO [34m preprocessing...[0m
+10:46:05,966 preprocess_minkowski INFO [34m preprocessing...[0m
+10:46:13,385 preprocess_minkowski INFO [34m preprocessing...[0m
+10:48:45,340 preprocess_minkowski INFO [34m preprocessing...[0m
+10:48:54,216 preprocess_minkowski INFO [34m preprocessing...[0m
+10:49:09,190 preprocess_minkowski INFO [34m preprocessing...[0m
+10:51:09,354 preprocess_minkowski INFO [34m preprocessing...[0m
+10:58:42,419 preprocess_minkowski INFO [34m preprocessing...[0m
+10:58:42,488 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/1.pcd or its corresponding ascii file data/raw/train/ascii/1.asc: read_point_cloud(): incompatible function arguments. The following argument types are supported:
+    1. (filename: str, format: str = 'auto', remove_nan_points: bool = False, remove_infinite_points: bool = False, print_progress: bool = False) -> open3d.cuda.pybind.geometry.PointCloud
+
+Invoked with: PosixPath('data/raw/train/pcd/1.pcd'); kwargs: remove_nan_points=True, remove_infinite_points=True
+10:58:42,488 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/2.pcd or its corresponding ascii file data/raw/train/ascii/2.asc: read_point_cloud(): incompatible function arguments. The following argument types are supported:
+    1. (filename: str, format: str = 'auto', remove_nan_points: bool = False, remove_infinite_points: bool = False, print_progress: bool = False) -> open3d.cuda.pybind.geometry.PointCloud
+
+Invoked with: PosixPath('data/raw/train/pcd/2.pcd'); kwargs: remove_nan_points=True, remove_infinite_points=True
+11:03:43,439 preprocess_minkowski INFO [34m preprocessing...[0m
+11:03:57,300 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:03:57,347 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:03:57,625 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:03:57,672 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:03:58,25 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:03:58,660 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:03:58,711 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:03:58,916 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:03:58,967 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:03:59,413 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:12:01,533 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:12:01,581 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:12:01,741 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:12:01,788 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:12:02,152 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:12:02,738 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:12:02,793 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:12:02,966 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:12:03,19 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:12:03,468 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:14:25,903 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:14:25,950 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:14:26,103 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:14:26,149 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:14:26,492 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:14:27,203 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:14:27,256 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:14:27,440 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:14:27,494 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:14:27,924 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:22:10,600 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:22:10,600 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:22:10,646 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:22:10,803 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:22:10,849 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:22:11,201 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:22:11,201 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:22:11,887 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:22:11,887 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:22:11,940 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:22:12,109 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:22:12,163 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:22:12,608 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:22:12,608 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:22:56,742 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:22:56,742 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:22:56,789 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:22:56,949 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:22:56,996 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:22:57,345 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:22:57,345 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:22:58,264 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:22:58,264 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:22:58,318 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:22:58,489 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:22:58,543 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:22:58,999 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:22:59,0 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:27:39,218 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:27:39,218 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:27:39,264 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:27:39,416 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:27:39,462 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:27:39,805 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+11:27:39,805 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:27:40,488 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:27:40,488 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:27:40,540 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+11:27:40,703 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+11:27:40,755 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+11:27:41,188 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+11:27:41,188 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:53:56,752 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:53:56,752 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:53:56,805 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:53:56,956 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:53:57,1 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:53:57,343 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+11:53:57,343 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:53:57,344 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+11:53:57,344 preprocess_minkowski INFO Each point has 3 normals
+11:53:57,344 preprocess_minkowski INFO Estimated normals with radius 0.200000
+11:53:57,345 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+11:53:57,345 preprocess_minkowski INFO [36mAssigning Labels...[0m
+11:54:05,662 preprocess_minkowski INFO Assigned 292 labels to 292 points
+11:56:06,624 preprocess_minkowski INFO [36mNormalizing coords...[0m
+11:56:06,625 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+11:56:06,670 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+11:56:06,824 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+11:56:06,872 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+11:56:07,228 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+11:56:07,228 preprocess_minkowski INFO [36mEstimating normals...[0m
+11:56:07,238 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+11:56:07,238 preprocess_minkowski INFO Each point has 3 normals
+11:56:07,238 preprocess_minkowski INFO Estimated normals with radius 0.200000
+11:56:07,238 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+11:56:07,238 preprocess_minkowski INFO [36mAssigning Labels...[0m
+11:56:15,839 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:06:43,813 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:06:43,813 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:06:43,858 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:06:44,8 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:06:44,53 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:06:44,397 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+12:06:44,397 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:06:44,398 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+12:06:44,398 preprocess_minkowski INFO Each point has 3 normals
+12:06:44,398 preprocess_minkowski INFO Estimated normals with radius 0.200000
+12:06:44,398 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+12:06:44,398 preprocess_minkowski INFO [36mAssigning Labels...[0m
+12:06:52,660 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:06:52,691 preprocess_minkowski INFO All rows are complete.
+12:11:21,181 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:11:21,181 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:11:21,226 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:11:21,375 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:11:21,420 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:11:21,762 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+12:11:21,762 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:11:21,763 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+12:11:21,763 preprocess_minkowski INFO Each point has 3 normals
+12:11:21,763 preprocess_minkowski INFO Estimated normals with radius 0.200000
+12:11:21,763 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+12:11:21,763 preprocess_minkowski INFO [36mAssigning Labels...[0m
+12:11:30,11 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:11:30,40 preprocess_minkowski INFO All rows are complete.
+12:14:32,621 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:14:32,622 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:14:32,667 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:14:32,820 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:14:32,866 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:14:33,217 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+12:14:33,217 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:14:33,218 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+12:14:33,218 preprocess_minkowski INFO Each point has 3 normals
+12:14:33,218 preprocess_minkowski INFO Estimated normals with radius 0.200000
+12:14:33,218 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+12:14:33,218 preprocess_minkowski INFO [36mAssigning Labels...[0m
+12:14:41,588 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:14:41,618 preprocess_minkowski INFO All rows are complete.
+12:19:14,568 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:19:14,568 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:19:14,612 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:19:14,761 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:19:14,805 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:19:15,146 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+12:19:15,146 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:19:15,147 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+12:19:15,147 preprocess_minkowski INFO Each point has 3 normals
+12:19:15,147 preprocess_minkowski INFO Estimated normals with radius 0.200000
+12:19:15,147 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+12:19:15,147 preprocess_minkowski INFO [36mAssigning Labels...[0m
+12:19:23,413 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:19:23,442 preprocess_minkowski INFO All rows are complete.
+12:21:26,535 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:21:26,535 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:21:26,580 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:21:26,730 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:21:26,775 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:21:27,120 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+12:21:27,120 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:21:27,121 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+12:21:27,121 preprocess_minkowski INFO Each point has 3 normals
+12:21:27,121 preprocess_minkowski INFO Estimated normals with radius 0.200000
+12:21:27,121 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+12:21:27,121 preprocess_minkowski INFO [36mAssigning Labels...[0m
+12:21:35,390 preprocess_minkowski INFO Assigned 292 labels to 292 points
+12:21:35,419 preprocess_minkowski INFO All rows are complete.
+12:41:12,765 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:41:12,765 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:41:12,811 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+12:41:13,131 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+12:41:13,178 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+12:41:13,525 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+12:41:13,525 preprocess_minkowski INFO [36mEstimating normals...[0m
+12:41:13,977 preprocess_minkowski INFO [36mNormalizing coords...[0m
+12:41:13,977 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+12:41:14,28 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+12:41:14,197 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+12:41:14,249 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+12:41:14,686 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+12:41:14,686 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:01:09,480 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:01:09,480 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:01:09,525 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:01:09,674 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:01:09,719 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:01:10,61 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:01:10,61 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:01:10,75 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+13:01:10,75 preprocess_minkowski INFO Each point has 3 normals
+13:01:10,75 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:01:10,75 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:01:10,75 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:01:18,344 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:01:18,369 preprocess_minkowski INFO All rows are complete.
+13:05:50,872 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:05:50,872 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:05:50,917 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:05:51,67 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:05:51,112 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:05:51,453 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:05:51,454 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:05:51,455 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:05:51,455 preprocess_minkowski INFO Each point has 3 normals
+13:05:51,455 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:05:51,455 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:05:51,455 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:05:59,833 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:05:59,858 preprocess_minkowski INFO All rows are complete.
+13:07:31,78 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:07:31,78 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:07:31,123 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:07:31,271 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:07:31,316 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:07:31,656 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:07:31,657 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:07:31,657 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:07:31,657 preprocess_minkowski INFO Each point has 3 normals
+13:07:31,658 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:07:31,658 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:07:31,658 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:07:39,904 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:07:39,933 preprocess_minkowski INFO All rows are complete.
+13:08:30,925 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:08:30,926 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:08:30,970 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:08:31,121 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:08:31,166 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:08:31,512 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:08:31,512 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:08:31,513 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:08:31,513 preprocess_minkowski INFO Each point has 3 normals
+13:08:31,513 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:08:31,513 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:08:31,513 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:08:39,790 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:08:39,819 preprocess_minkowski INFO All rows are complete.
+13:09:44,344 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:09:44,344 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:09:44,389 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:09:44,541 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:09:44,586 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:09:44,929 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:09:44,929 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:09:44,930 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:09:44,930 preprocess_minkowski INFO Each point has 3 normals
+13:09:44,931 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:09:44,931 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:09:44,931 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:09:53,230 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:09:53,258 preprocess_minkowski INFO All rows are complete.
+13:40:19,839 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:40:19,839 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:40:19,886 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:40:20,42 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:40:20,89 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:40:20,439 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:40:20,439 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:40:20,440 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:40:20,440 preprocess_minkowski INFO Each point has 3 normals
+13:40:20,440 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:40:20,440 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:40:20,440 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:40:28,936 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:40:28,973 preprocess_minkowski INFO All rows are complete.
+13:42:23,379 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:42:23,379 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:42:23,429 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:42:23,588 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:42:23,637 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:42:23,985 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:42:23,986 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:42:23,986 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:42:23,986 preprocess_minkowski INFO Each point has 3 normals
+13:42:23,987 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:42:23,987 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:42:23,987 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:42:32,597 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:42:32,635 preprocess_minkowski INFO All rows are complete.
+13:44:06,693 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:44:06,693 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:44:06,740 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:44:06,889 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:44:06,937 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:44:07,296 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:44:07,296 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:44:07,297 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:44:07,297 preprocess_minkowski INFO Each point has 3 normals
+13:44:07,297 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:44:07,297 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:44:07,297 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:44:15,685 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:44:15,720 preprocess_minkowski INFO All rows are complete.
+13:44:28,686 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:44:28,686 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:44:28,731 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:44:28,880 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:44:28,924 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:44:29,388 preprocess_minkowski INFO Downsampled from 28341266 to 292 points
+13:44:29,388 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:44:29,389 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+13:44:29,389 preprocess_minkowski INFO Each point has 3 normals
+13:44:29,389 preprocess_minkowski INFO Estimated normals with radius 0.200000
+13:44:29,389 preprocess_minkowski INFO Min: -0.995002, Max: 0.999856
+13:44:29,390 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:44:37,866 preprocess_minkowski INFO Assigned 292 labels to 292 points
+13:44:37,901 preprocess_minkowski INFO All rows are complete.
+13:47:27,720 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:47:27,720 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:47:27,766 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:47:27,919 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:47:27,966 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:47:28,310 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+13:47:28,310 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:47:29,30 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:47:29,30 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:47:29,84 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+13:47:29,248 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+13:47:29,302 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+13:47:29,744 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+13:47:29,744 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:49:16,618 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:49:16,619 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:49:16,665 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:49:16,816 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:49:16,862 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:49:17,204 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+13:49:17,204 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/1.pcd or its corresponding asc file data/raw/train/asc/1.asc: 'Preprocessor' object has no attribute 'estimate_normals'
+13:49:17,924 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:49:17,924 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:49:17,978 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+13:49:18,141 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+13:49:18,195 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+13:49:18,635 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+13:49:18,636 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/2.pcd or its corresponding asc file data/raw/train/asc/2.asc: 'Preprocessor' object has no attribute 'estimate_normals'
+13:54:14,288 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:54:14,288 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:54:14,334 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:54:14,485 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:54:14,531 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:54:14,876 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+13:54:14,876 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:54:14,890 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+13:54:14,890 preprocess_minkowski INFO Each point has 3 normals
+13:54:14,890 preprocess_minkowski INFO Estimated normals with radius 0.020000
+13:54:14,890 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+13:54:14,890 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:54:15,684 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:54:15,684 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:54:15,740 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+13:54:15,933 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+13:54:15,997 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+13:54:16,455 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+13:54:16,455 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:54:16,473 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+13:54:16,473 preprocess_minkowski INFO Each point has 3 normals
+13:54:16,473 preprocess_minkowski INFO Estimated normals with radius 0.020000
+13:54:16,473 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+13:54:16,473 preprocess_minkowski INFO [36mAssigning Labels...[0m
+13:54:24,200 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+13:54:24,265 preprocess_minkowski INFO All rows are complete.
+13:54:26,963 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+13:54:27,44 preprocess_minkowski INFO All rows are complete.
+13:59:39,196 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:59:39,196 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:59:39,244 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+13:59:39,402 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+13:59:39,450 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+13:59:39,805 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+13:59:39,805 preprocess_minkowski INFO [36mEstimating normals...[0m
+13:59:40,387 preprocess_minkowski INFO [36mNormalizing coords...[0m
+13:59:40,387 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+13:59:40,442 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+13:59:40,614 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+13:59:40,669 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+13:59:41,116 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+13:59:41,116 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:05:26,117 preprocess_minkowski INFO matched file pairs: [(PosixPath('data/raw/train/pcd/1.pcd'), PosixPath('data/raw/train/asc/1.asc')), (PosixPath('data/raw/train/pcd/2.pcd'), PosixPath('data/raw/train/asc/2.asc'))]
+14:05:27,33 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/1.pcd or its corresponding asc file data/raw/train/asc/1.asc: process_pcd() takes 2 positional arguments but 3 were given
+14:05:27,101 preprocess_minkowski ERROR An error occurred during preprocessing data/raw/train/pcd/2.pcd or its corresponding asc file data/raw/train/asc/2.asc: process_pcd() takes 2 positional arguments but 3 were given
+14:05:27,101 preprocess_minkowski ERROR 2 files failed to process.
+14:06:48,647 preprocess_minkowski INFO matched file pairs: [(PosixPath('data/raw/train/pcd/1.pcd'), PosixPath('data/raw/train/asc/1.asc')), (PosixPath('data/raw/train/pcd/2.pcd'), PosixPath('data/raw/train/asc/2.asc'))]
+14:07:03,46 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:07:03,46 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:07:03,93 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:07:03,251 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:07:03,299 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:07:03,651 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:07:03,651 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:07:03,664 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:07:04,626 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:07:04,626 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:07:04,683 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:07:04,886 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:07:04,944 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:07:05,409 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:07:05,409 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:07:05,429 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:07:13,97 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:07:13,163 preprocess_minkowski INFO All rows are complete.
+14:07:16,76 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:07:16,158 preprocess_minkowski INFO All rows are complete.
+14:07:16,196 preprocess_minkowski INFO All files processed successfully.
+14:08:59,5 preprocess_minkowski INFO matched file pairs: [(PosixPath('data/raw/train/pcd/1.pcd'), PosixPath('data/raw/train/asc/1.asc')), (PosixPath('data/raw/train/pcd/2.pcd'), PosixPath('data/raw/train/asc/2.asc'))]
+14:09:13,196 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:09:13,197 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:09:13,243 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:09:13,396 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:09:13,443 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:09:13,790 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:09:13,790 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:09:13,805 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:09:14,548 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:09:14,548 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:09:14,603 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:09:14,789 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:09:14,847 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:09:15,310 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:09:15,310 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:09:15,329 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:09:23,95 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:09:23,161 preprocess_minkowski INFO All rows are complete.
+14:09:25,787 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:09:25,867 preprocess_minkowski INFO All rows are complete.
+14:09:25,905 preprocess_minkowski INFO All files processed successfully.
+14:12:54,841 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:12:54,841 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:12:54,888 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:12:55,41 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:12:55,88 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:12:55,433 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:12:55,433 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:12:55,446 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:12:56,182 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:12:56,182 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:12:56,240 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:12:56,424 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:12:56,486 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:12:56,936 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:12:56,936 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:12:56,953 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:13:04,830 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:13:04,895 preprocess_minkowski INFO All rows are complete.
+14:13:07,426 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:13:07,505 preprocess_minkowski INFO All rows are complete.
+14:13:07,544 preprocess_minkowski INFO All files processed successfully.
+14:13:40,656 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:13:40,656 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:13:40,703 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:13:40,858 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:13:40,905 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:13:41,257 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:13:41,257 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:13:41,271 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+14:13:41,271 preprocess_minkowski INFO Each point has 3 normals
+14:13:41,271 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:13:41,271 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+14:13:41,271 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:13:42,23 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:13:42,23 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:13:42,78 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:13:42,265 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:13:42,324 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:13:42,787 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:13:42,787 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:13:42,803 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+14:13:42,804 preprocess_minkowski INFO Each point has 3 normals
+14:13:42,804 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:13:42,804 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+14:13:42,804 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:13:50,527 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:13:50,592 preprocess_minkowski INFO All rows are complete.
+14:13:53,242 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:13:53,322 preprocess_minkowski INFO All rows are complete.
+14:13:53,359 preprocess_minkowski INFO All files processed successfully.
+14:27:51,910 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:27:51,911 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:27:51,957 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:27:52,109 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:27:52,155 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:27:52,502 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:27:52,502 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:27:53,213 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:27:53,213 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:27:53,268 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:27:53,433 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:27:53,488 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:27:53,924 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:27:53,925 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:29:58,92 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:29:58,92 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:29:58,139 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:29:58,291 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:29:58,338 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:29:58,683 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:29:58,683 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:29:58,696 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:29:59,409 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:29:59,409 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:29:59,464 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:29:59,650 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:29:59,703 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:30:00,160 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:30:00,160 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:30:00,177 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:30:08,117 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:30:08,183 preprocess_minkowski INFO All rows are complete.
+14:30:10,843 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:30:10,924 preprocess_minkowski INFO All rows are complete.
+14:30:10,963 preprocess_minkowski INFO All files processed successfully.
+14:30:33,166 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:30:33,166 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:30:33,212 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:30:33,364 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:30:33,411 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:30:33,756 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:30:33,756 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:30:33,769 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+14:30:33,769 preprocess_minkowski INFO Each point has 3 normals
+14:30:33,769 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:30:33,769 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+14:30:33,769 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:30:34,477 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:30:34,477 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:30:34,537 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:30:34,718 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:30:34,780 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:30:35,237 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:30:35,237 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:30:35,255 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+14:30:35,255 preprocess_minkowski INFO Each point has 3 normals
+14:30:35,255 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:30:35,255 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+14:30:35,255 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:30:43,7 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:30:43,73 preprocess_minkowski INFO All rows are complete.
+14:30:45,707 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:30:45,787 preprocess_minkowski INFO All rows are complete.
+14:30:45,826 preprocess_minkowski INFO All files processed successfully.
+14:36:03,441 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:36:03,441 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:36:03,493 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:36:03,661 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:36:03,715 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:36:04,141 preprocess_minkowski INFO Downsampled from 31044919 to 228 points
+14:36:04,141 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:36:04,143 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+14:36:04,143 preprocess_minkowski INFO Each point has 3 normals
+14:36:04,143 preprocess_minkowski INFO Estimated normals with radius 0.200000
+14:36:04,143 preprocess_minkowski INFO Min: -0.999999, Max: 0.999972
+14:36:04,143 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:36:13,763 preprocess_minkowski INFO Assigned 228 labels to 228 points
+14:36:13,802 preprocess_minkowski INFO All rows are complete.
+14:36:28,354 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:36:28,354 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:36:28,404 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:36:28,570 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:36:28,621 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:36:29,181 preprocess_minkowski INFO Downsampled from 31044919 to 228 points
+14:36:29,181 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:36:29,182 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+14:36:29,182 preprocess_minkowski INFO Each point has 3 normals
+14:36:29,182 preprocess_minkowski INFO Estimated normals with radius 0.200000
+14:36:29,182 preprocess_minkowski INFO Min: -0.999999, Max: 0.999972
+14:36:29,183 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:36:38,665 preprocess_minkowski INFO Assigned 228 labels to 228 points
+14:36:38,704 preprocess_minkowski INFO All rows are complete.
+14:43:49,671 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:43:49,671 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:43:49,690 preprocess_minkowski INFO Min: -7.465733, Max: 34.432938
+14:43:49,755 preprocess_minkowski INFO Normalized with the scalefactor of 0.029042
+14:43:49,774 preprocess_minkowski INFO Min: -0.216820, Max: 1.000000
+14:43:49,911 preprocess_minkowski INFO Downsampled from 10708512 to 17908 points
+14:43:49,911 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:43:49,920 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+14:43:49,920 preprocess_minkowski INFO Each point has 3 normals
+14:43:49,920 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:43:49,920 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+14:43:49,920 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:43:52,931 preprocess_minkowski INFO Assigned 17908 labels to 17908 points
+14:43:52,966 preprocess_minkowski INFO All rows are complete.
+14:43:57,657 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:43:57,657 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:43:57,702 preprocess_minkowski INFO Min: -21.984800, Max: 27.358179
+14:43:57,855 preprocess_minkowski INFO Normalized with the scalefactor of 0.036552
+14:43:57,900 preprocess_minkowski INFO Min: -0.803592, Max: 1.000000
+14:43:58,241 preprocess_minkowski INFO Downsampled from 26879861 to 52628 points
+14:43:58,241 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:43:58,271 preprocess_minkowski INFO Normals estimated in 0.03 seconds
+14:43:58,271 preprocess_minkowski INFO Each point has 3 normals
+14:43:58,271 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:43:58,271 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+14:43:58,271 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:43:58,421 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:43:58,422 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:43:58,504 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+14:43:58,726 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+14:43:58,800 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+14:43:59,174 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+14:43:59,174 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:43:59,188 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+14:43:59,188 preprocess_minkowski INFO Each point has 3 normals
+14:43:59,189 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:43:59,189 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+14:43:59,189 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:43:59,863 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:43:59,863 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:43:59,936 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+14:44:00,142 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+14:44:00,201 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+14:44:00,680 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+14:44:00,680 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:44:00,697 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+14:44:00,698 preprocess_minkowski INFO Each point has 3 normals
+14:44:00,698 preprocess_minkowski INFO Estimated normals with radius 0.020000
+14:44:00,698 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+14:44:00,698 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:44:06,782 preprocess_minkowski INFO Assigned 52628 labels to 52628 points
+14:44:06,890 preprocess_minkowski INFO All rows are complete.
+14:44:08,976 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+14:44:09,40 preprocess_minkowski INFO All rows are complete.
+14:44:11,532 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+14:44:11,614 preprocess_minkowski INFO All rows are complete.
+14:44:11,653 preprocess_minkowski INFO All files processed successfully.
+14:54:29,784 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:54:29,784 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:54:29,802 preprocess_minkowski INFO Min: -7.465733, Max: 34.432938
+14:54:29,860 preprocess_minkowski INFO Normalized with the scalefactor of 0.029042
+14:54:29,878 preprocess_minkowski INFO Min: -0.216820, Max: 1.000000
+14:54:30,4 preprocess_minkowski INFO Downsampled from 10708512 to 129 points
+14:54:30,4 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:54:30,6 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+14:54:30,6 preprocess_minkowski INFO Each point has 3 normals
+14:54:30,6 preprocess_minkowski INFO Estimated normals with radius 0.200000
+14:54:30,6 preprocess_minkowski INFO Min: -0.999976, Max: 0.999987
+14:54:30,6 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:54:32,673 preprocess_minkowski INFO Assigned 129 labels to 129 points
+14:54:32,682 preprocess_minkowski INFO All rows are complete.
+14:55:02,344 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:55:02,344 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:55:02,362 preprocess_minkowski INFO Min: -7.465733, Max: 34.432938
+14:55:02,419 preprocess_minkowski INFO Normalized with the scalefactor of 0.029042
+14:55:02,437 preprocess_minkowski INFO Min: -0.216820, Max: 1.000000
+14:55:02,568 preprocess_minkowski INFO Downsampled from 10708512 to 129 points
+14:55:02,568 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:55:02,569 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+14:55:02,569 preprocess_minkowski INFO Each point has 3 normals
+14:55:02,570 preprocess_minkowski INFO Estimated normals with radius 0.200000
+14:55:02,570 preprocess_minkowski INFO Min: -0.999976, Max: 0.999987
+14:55:02,570 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:55:05,266 preprocess_minkowski INFO Assigned 129 labels to 129 points
+14:55:05,276 preprocess_minkowski INFO All rows are complete.
+14:55:10,135 preprocess_minkowski INFO [36mNormalizing coords...[0m
+14:55:10,135 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+14:55:10,152 preprocess_minkowski INFO Min: -7.465733, Max: 34.432938
+14:55:10,209 preprocess_minkowski INFO Normalized with the scalefactor of 0.029042
+14:55:10,227 preprocess_minkowski INFO Min: -0.216820, Max: 1.000000
+14:55:10,402 preprocess_minkowski INFO Downsampled from 10708512 to 129 points
+14:55:10,402 preprocess_minkowski INFO [36mEstimating normals...[0m
+14:55:10,403 preprocess_minkowski INFO Normals estimated in 0.00 seconds
+14:55:10,403 preprocess_minkowski INFO Each point has 3 normals
+14:55:10,403 preprocess_minkowski INFO Estimated normals with radius 0.200000
+14:55:10,403 preprocess_minkowski INFO Min: -0.999976, Max: 0.999987
+14:55:10,403 preprocess_minkowski INFO [36mAssigning Labels...[0m
+14:55:13,138 preprocess_minkowski INFO Assigned 129 labels to 129 points
+14:55:13,149 preprocess_minkowski INFO All rows are complete.
+16:34:21,728 preprocess_minkowski INFO [36mNormalizing coords...[0m
+16:34:21,729 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+16:34:21,751 preprocess_minkowski INFO Min: -7.465733, Max: 34.432938
+16:34:21,814 preprocess_minkowski INFO Normalized with the scalefactor of 0.029042
+16:34:21,833 preprocess_minkowski INFO Min: -0.216820, Max: 1.000000
+16:34:21,970 preprocess_minkowski INFO Downsampled from 10708512 to 17908 points
+16:34:21,970 preprocess_minkowski INFO [36mEstimating normals...[0m
+16:34:21,978 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+16:34:21,978 preprocess_minkowski INFO Each point has 3 normals
+16:34:21,979 preprocess_minkowski INFO Estimated normals with radius 0.020000
+16:34:21,979 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+16:34:21,979 preprocess_minkowski INFO [36mAssigning Labels...[0m
+16:34:24,974 preprocess_minkowski INFO Assigned 17908 labels to 17908 points
+16:34:25,9 preprocess_minkowski INFO All rows are complete.
+16:34:29,662 preprocess_minkowski INFO [36mNormalizing coords...[0m
+16:34:29,662 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+16:34:29,707 preprocess_minkowski INFO Min: -21.984800, Max: 27.358179
+16:34:29,860 preprocess_minkowski INFO Normalized with the scalefactor of 0.036552
+16:34:29,906 preprocess_minkowski INFO Min: -0.803592, Max: 1.000000
+16:34:30,262 preprocess_minkowski INFO Downsampled from 26879861 to 52628 points
+16:34:30,262 preprocess_minkowski INFO [36mEstimating normals...[0m
+16:34:30,287 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+16:34:30,287 preprocess_minkowski INFO Each point has 3 normals
+16:34:30,287 preprocess_minkowski INFO Estimated normals with radius 0.020000
+16:34:30,287 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+16:34:30,287 preprocess_minkowski INFO [36mAssigning Labels...[0m
+16:34:30,339 preprocess_minkowski INFO [36mNormalizing coords...[0m
+16:34:30,339 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+16:34:30,403 preprocess_minkowski INFO Min: -24.135693, Max: 9.267000
+16:34:30,642 preprocess_minkowski INFO Normalized with the scalefactor of 0.041432
+16:34:30,709 preprocess_minkowski INFO Min: -1.000000, Max: 0.383954
+16:34:31,93 preprocess_minkowski INFO Downsampled from 28341266 to 31390 points
+16:34:31,93 preprocess_minkowski INFO [36mEstimating normals...[0m
+16:34:31,106 preprocess_minkowski INFO Normals estimated in 0.01 seconds
+16:34:31,107 preprocess_minkowski INFO Each point has 3 normals
+16:34:31,107 preprocess_minkowski INFO Estimated normals with radius 0.020000
+16:34:31,107 preprocess_minkowski INFO Min: -0.999999, Max: 1.000000
+16:34:31,107 preprocess_minkowski INFO [36mAssigning Labels...[0m
+16:34:31,812 preprocess_minkowski INFO [36mNormalizing coords...[0m
+16:34:31,812 preprocess_minkowski INFO Translated to the origin, consider log-scaling or min-max scaling when dealing with scattered values (outliers) or too much detail will be lost
+16:34:31,887 preprocess_minkowski INFO Min: -31.722919, Max: 11.588166
+16:34:32,117 preprocess_minkowski INFO Normalized with the scalefactor of 0.031523
+16:34:32,178 preprocess_minkowski INFO Min: -1.000000, Max: 0.365293
+16:34:32,657 preprocess_minkowski INFO Downsampled from 31044919 to 40903 points
+16:34:32,657 preprocess_minkowski INFO [36mEstimating normals...[0m
+16:34:32,678 preprocess_minkowski INFO Normals estimated in 0.02 seconds
+16:34:32,678 preprocess_minkowski INFO Each point has 3 normals
+16:34:32,678 preprocess_minkowski INFO Estimated normals with radius 0.020000
+16:34:32,678 preprocess_minkowski INFO Min: -1.000000, Max: 1.000000
+16:34:32,678 preprocess_minkowski INFO [36mAssigning Labels...[0m
+16:34:39,60 preprocess_minkowski INFO Assigned 52628 labels to 52628 points
+16:34:39,163 preprocess_minkowski INFO All rows are complete.
+16:34:41,151 preprocess_minkowski INFO Assigned 31390 labels to 31390 points
+16:34:41,215 preprocess_minkowski INFO All rows are complete.
+16:34:43,736 preprocess_minkowski INFO Assigned 40903 labels to 40903 points
+16:34:43,816 preprocess_minkowski INFO All rows are complete.
+16:34:43,853 preprocess_minkowski INFO All files processed successfully.
