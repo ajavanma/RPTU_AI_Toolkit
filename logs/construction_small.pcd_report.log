@@ -1,0 +1,49 @@
+PCD file information for '../data/preprocessed/construction_small.pcd':
+PointCloud with 249572 points.
+First three relevant rows: xyz, rgb, n:
+[[-7.97554541e+00 -3.49898823e-02  9.87980127e-01  2.35294118e-01
+   2.39215686e-01  2.43137255e-01 -4.92598861e-03  4.92598861e-03
+   9.99975681e-01]
+ [-7.93654537e+00 -3.39898840e-02  9.87980127e-01  2.50980392e-01
+   2.54901961e-01  2.66666667e-01  4.92598861e-03  4.92598861e-03
+   9.99975681e-01]
+ [-7.97354507e+00  7.01011671e-03  9.87980127e-01  2.43137255e-01
+   2.54901961e-01  2.66666667e-01  4.92598861e-03  4.92598861e-03
+   9.99975681e-01]]
+Number of zeros found in Classification: 0
+Number of NaNs found in Classification: 0
+Number of infinite values found in Classification: 0
+Min and max values for Classification: -7.9913153648376465, 3.6629951000213623
+Number of zeros found in rgb: 0
+Number of NaNs found in rgb: 0
+Number of infinite values found in rgb: 0
+Min and max values for rgb: -0.04098988324403763, 11.588166236877441
+Number of zeros found in normal_x: 0
+Number of NaNs found in normal_x: 0
+Number of infinite values found in normal_x: 0
+Min and max values for normal_x: 0.3839801549911499, 3.6805191040039062
+Number of zeros found in normal_y: 0
+Number of NaNs found in normal_y: 0
+Number of infinite values found in normal_y: 0
+Min and max values for normal_y: 0.00392156862745098, 1.0
+Number of zeros found in normal_z: 0
+Number of NaNs found in normal_z: 0
+Number of infinite values found in normal_z: 0
+Min and max values for normal_z: 0.00392156862745098, 1.0
+Number of zeros found in x: 0
+Number of NaNs found in x: 0
+Number of infinite values found in x: 0
+Min and max values for x: 0.00392156862745098, 1.0
+Number of zeros found in y: 0
+Number of NaNs found in y: 0
+Number of infinite values found in y: 0
+Min and max values for y: -0.9999874830245972, 0.9999874830245972
+Number of zeros found in z: 0
+Number of NaNs found in z: 0
+Number of infinite values found in z: 0
+Min and max values for z: -0.9999874830245972, 0.9999874830245972
+Number of zeros found in _: 0
+Number of NaNs found in _: 0
+Number of infinite values found in _: 0
+Min and max values for _: -0.9999990463256836, 0.9999756813049316
+Done writing to file

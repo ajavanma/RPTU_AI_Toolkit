@@ -1,0 +1,173 @@
+10:21:57,882 train INFO trying to load 0 files from 0
+10:22:38,85 train INFO trying to load 0 files from train_dataset
+10:23:21,735 train INFO trying to load 0 files from train_dataset
+10:23:39,802 train INFO trying to load 0 files from train_dataset
+13:49:35,374 train INFO trying to load 0 files from train_dataset
+15:02:53,762 train INFO trying to load 9 files from train_dataset
+15:04:46,35 train INFO trying to load 9 files from train_dataset
+15:04:46,35 train INFO trying to load 9 files from val_dataloader
+15:04:46,35 train INFO trying to load 9 files from test_dataloader
+15:04:46,44 train INFO [36mpreparing to train...[0m
+15:04:46,45 train INFO [36minstantiating Model...[0m
+15:06:16,336 train INFO trying to load 9 files from train_dataset
+15:06:16,336 train INFO trying to load 9 files from val_dataloader
+15:06:16,336 train INFO trying to load 9 files from test_dataloader
+15:06:16,336 train INFO [36mpreparing to train...[0m
+15:06:16,337 train INFO [36minstantiating Model...[0m
+15:06:16,338 train INFO [36mtraining... [0m
+15:08:45,235 train INFO trying to load 9 files from train_dataset
+15:08:45,235 train INFO trying to load 9 files from val_dataloader
+15:08:45,235 train INFO trying to load 9 files from test_dataloader
+15:08:45,235 train INFO [36mPreparing to train...[0m
+15:08:45,236 train INFO [36mInstantiating Model...[0m
+15:08:45,237 train INFO [36mtraining... [0m
+15:12:34,26 train INFO trying to load 9 files from train_dataset
+15:12:34,26 train INFO trying to load 9 files from val_dataloader
+15:12:34,26 train INFO trying to load 9 files from test_dataloader
+15:12:34,27 train INFO [36mPreparing to train...[0m
+15:12:34,27 train INFO [36mInstantiating Model...[0m
+15:12:34,28 train INFO [36mtraining... [0m
+15:18:19,841 train INFO trying to load 9 files from train_dataset
+15:18:19,841 train INFO trying to load 9 files from val_dataloader
+15:18:19,841 train INFO trying to load 9 files from test_dataloader
+15:18:19,841 train INFO [36mPreparing to train...[0m
+15:18:19,842 train INFO [36mInstantiating Model...[0m
+15:18:19,843 train INFO [36mtraining... [0m
+15:20:56,694 train INFO trying to load 3 files from train_dataset
+15:20:56,695 train INFO trying to load 3 files from val_dataloader
+15:20:56,695 train INFO trying to load 3 files from test_dataloader
+15:20:56,695 train INFO [36mPreparing to train...[0m
+15:20:56,695 train INFO [36mInstantiating Model...[0m
+15:20:56,696 train INFO [36mtraining... [0m
+15:25:32,316 train INFO trying to load 3 files from train_dataset
+15:25:32,316 train INFO trying to load 3 files from val_dataloader
+15:25:32,316 train INFO trying to load 3 files from test_dataloader
+15:25:32,316 train INFO [36mPreparing to train...[0m
+15:25:32,317 train INFO [36mInstantiating Model...[0m
+15:25:32,318 train INFO [36mtraining... [0m
+15:26:49,418 train INFO trying to load 3 files from train_dataset
+15:26:49,419 train INFO trying to load 3 files from val_dataloader
+15:26:49,419 train INFO trying to load 3 files from test_dataloader
+15:26:49,419 train INFO [36mPreparing to train...[0m
+15:26:49,419 train INFO [36mInstantiating Model...[0m
+15:26:49,420 train INFO [36mtraining... [0m
+15:49:29,211 train INFO trying to load 3 files from train_dataset
+15:49:29,212 train INFO trying to load 3 files from val_dataloader
+15:49:29,212 train INFO trying to load 3 files from test_dataloader
+15:49:29,212 train INFO [36mPreparing to train...[0m
+15:49:29,212 train INFO [36mInstantiating Model...[0m
+15:49:29,213 train INFO [36mtraining... [0m
+15:57:28,880 train INFO trying to load 3 files from train_dataset
+15:57:28,880 train INFO trying to load 3 files from val_dataloader
+15:57:28,880 train INFO trying to load 3 files from test_dataloader
+15:57:28,881 train INFO [36mPreparing to train...[0m
+15:57:28,881 train INFO [36mInstantiating Model...[0m
+15:57:28,882 train INFO [36mtraining... [0m
+16:12:08,461 train INFO trying to load 3 files from train_dataset
+16:12:08,461 train INFO trying to load 3 files from val_dataloader
+16:12:08,461 train INFO trying to load 3 files from test_dataloader
+16:12:08,461 train INFO [36mPreparing to train...[0m
+16:12:08,462 train INFO [36mInstantiating Model...[0m
+16:12:08,463 train INFO [36mtraining... [0m
+16:21:33,2 train INFO trying to load 3 files from train_dataset
+16:21:33,2 train INFO trying to load 3 files from val_dataloader
+16:21:33,2 train INFO trying to load 3 files from test_dataloader
+16:21:33,2 train INFO [36mPreparing to train...[0m
+16:21:33,3 train INFO [36mInstantiating Model...[0m
+16:21:33,3 train INFO [36mtraining... [0m
+16:24:52,851 train INFO trying to load 3 files from train_dataset
+16:24:52,851 train INFO trying to load 3 files from val_dataloader
+16:24:52,851 train INFO trying to load 3 files from test_dataloader
+16:24:52,852 train INFO [36mPreparing to train...[0m
+16:24:52,852 train INFO [36mInstantiating Model...[0m
+16:24:52,853 train INFO [36mtraining... [0m
+16:33:14,34 train INFO trying to load 3 files from train_dataset
+16:33:14,34 train INFO trying to load 3 files from val_dataloader
+16:33:14,34 train INFO trying to load 3 files from test_dataloader
+16:33:14,34 train INFO [36mPreparing to train...[0m
+16:33:14,35 train INFO [36mInstantiating Model...[0m
+16:33:15,525 train INFO [36mtraining... [0m
+16:34:49,405 train INFO trying to load 3 files from train_dataset
+16:34:49,405 train INFO trying to load 3 files from val_dataloader
+16:34:49,405 train INFO trying to load 3 files from test_dataloader
+16:34:49,405 train INFO [36mPreparing to train...[0m
+16:34:49,406 train INFO [36mInstantiating Model...[0m
+16:34:50,893 train INFO [36mtraining... [0m
+16:40:37,726 train INFO trying to load 3 files from train_dataset
+16:40:37,727 train INFO trying to load 3 files from val_dataloader
+16:40:37,727 train INFO trying to load 3 files from test_dataloader
+16:40:37,727 train INFO [36mPreparing to train...[0m
+16:40:37,727 train INFO [36mInstantiating Model...[0m
+16:40:39,213 train INFO [36mtraining... [0m
+16:41:51,939 train INFO trying to load 2 files from train_dataset
+16:41:51,939 train INFO trying to load 2 files from val_dataloader
+16:41:51,939 train INFO trying to load 2 files from test_dataloader
+16:41:51,939 train INFO [36mPreparing to train...[0m
+16:41:51,940 train INFO [36mInstantiating Model...[0m
+16:41:53,378 train INFO [36mtraining... [0m
+16:48:44,264 train INFO trying to load 2 files from train_dataset
+16:48:44,264 train INFO trying to load 2 files from val_dataloader
+16:48:44,264 train INFO trying to load 2 files from test_dataloader
+16:48:44,264 train INFO [36mPreparing to train...[0m
+16:48:44,265 train INFO [36mInstantiating Model...[0m
+16:48:45,705 train INFO [36mtraining... [0m
+16:54:43,704 train INFO trying to load 1 files from train_dataset
+16:54:43,704 train INFO trying to load 1 files from val_dataloader
+16:54:43,704 train INFO trying to load 2 files from test_dataloader
+16:54:43,704 train INFO [36mPreparing to train...[0m
+16:54:43,713 train INFO [36mInstantiating Model...[0m
+16:54:45,148 train INFO [36mtraining... [0m
+16:58:01,224 train INFO trying to load 1 files from train_dataset
+16:58:01,224 train INFO trying to load 1 files from val_dataloader
+16:58:01,224 train INFO trying to load 2 files from test_dataloader
+16:58:01,225 train INFO [36mPreparing to train...[0m
+16:58:01,225 train INFO [36mInstantiating Model...[0m
+16:58:02,705 train INFO [36mtraining... [0m
+16:59:05,284 train INFO trying to load 1 files from train_dataset
+16:59:05,284 train INFO trying to load 1 files from val_dataloader
+16:59:05,284 train INFO trying to load 2 files from test_dataloader
+16:59:05,284 train INFO [36mPreparing to train...[0m
+16:59:05,285 train INFO [36mInstantiating Model...[0m
+16:59:06,771 train INFO [36mtraining... [0m
+17:00:52,101 train INFO trying to load 1 files from train_dataset
+17:00:52,101 train INFO trying to load 1 files from val_dataloader
+17:00:52,101 train INFO trying to load 2 files from test_dataloader
+17:00:52,102 train INFO [36mPreparing to train...[0m
+17:00:52,102 train INFO [36mInstantiating Model...[0m
+17:00:53,582 train INFO [36mtraining... [0m
+17:04:44,993 train INFO trying to load 1 files from train_dataset
+17:04:44,993 train INFO trying to load 1 files from val_dataloader
+17:04:44,993 train INFO trying to load 2 files from test_dataloader
+17:04:44,993 train INFO [36mPreparing to train...[0m
+17:04:44,994 train INFO [36mInstantiating Model...[0m
+17:04:46,457 train INFO [36mtraining... [0m
+17:07:49,684 train INFO trying to load 1 files from train_dataset
+17:07:49,684 train INFO trying to load 1 files from val_dataloader
+17:07:49,684 train INFO trying to load 2 files from test_dataloader
+17:07:49,684 train INFO [36mPreparing to train...[0m
+17:07:49,685 train INFO [36mInstantiating Model...[0m
+17:07:51,165 train INFO [36mtraining... [0m
+17:10:49,894 train INFO trying to load 1 files from train_dataset
+17:10:49,894 train INFO trying to load 1 files from val_dataloader
+17:10:49,894 train INFO trying to load 2 files from test_dataloader
+17:10:49,894 train INFO [36mPreparing to train...[0m
+17:10:49,895 train INFO [36mInstantiating Model...[0m
+17:10:51,376 train INFO [36mtraining... [0m
+14:13:28,274 train INFO trying to load 1 files from train_dataset
+14:13:28,275 train INFO trying to load 1 files from val_dataloader
+14:13:28,275 train INFO trying to load 2 files from test_dataloader
+14:13:28,276 train INFO [36mPreparing to train...[0m
+14:13:28,277 train INFO [36mInstantiating Model...[0m
+14:13:28,278 train INFO [36mtraining... [0m
+14:17:58,205 train INFO trying to load 1 files from train_dataset
+14:17:58,205 train INFO trying to load 1 files from val_dataloader
+14:17:58,205 train INFO trying to load 2 files from test_dataloader
+14:17:58,205 train INFO [36mPreparing to train...[0m
+14:17:58,206 train INFO [36mInstantiating Model...[0m
+14:17:58,206 train INFO [36mtraining... [0m
+14:20:09,997 train INFO trying to load 1 files from train_dataset
+14:20:09,997 train INFO trying to load 1 files from val_dataloader
+14:20:09,997 train INFO trying to load 2 files from test_dataloader
+14:20:09,997 train INFO [36mPreparing to train...[0m
+14:20:09,998 train INFO [36mInstantiating Model...[0m
+14:20:09,999 train INFO [36mtraining... [0m
