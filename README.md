@@ -113,10 +113,18 @@ Open3d: manipulation of points (coords), colors and normals
 # Program structure
 Data Preparation
 1. Raw Data Analysis: Generate report of each asc and pcd file, check for skewed distribution.
+
 2. Preprocessing:  
 Data Preparation: Feature selection, data cleansing, transforming, outlier removal, scaling (normalization/standardization).
 Feature Engineering: Imputation (managing missing data), one-hot encoding of categorical features.
-3. Reports  
+
+3. Training:  
+A classification model will be trained based on a CNN architecture
+
+4. Inference:  
+Using Blender's python wrapper a BIM-Model will be generated from the trained ML-Model
+
+5. Reports:  
 Training and Evaluation  
 Iteration (hyperparameter tuning)  
 Test and Verification  
@@ -191,12 +199,14 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
+<!-- ACKNOWLEDGMENTS -->
+## Useful links
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+* [Point clouds][Point-clouds]
+* [Open3d][open3d-url]
+* [Minkowski Engine][MinkowskiEngine-url]
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
@@ -207,16 +217,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 
+<!-- LICENSE -->
+## License
 
-<!-- ACKNOWLEDGMENTS -->
-## Useful links
-
-* [Point clouds][Point-clouds]
-* [Open3d][open3d-url]
-* [Minkowski Engine][MinkowskiEngine-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
