@@ -82,32 +82,47 @@
 
 
 
-## Getting Started
+## Installation
 
-1. Create and activate a conda environment:
-   ```sh
-   conda create --name mink python=3.8
-   conda activate mink
+0. You can install the Minkowski Engine with `pip`, with anaconda, or on the system directly.  
+- [PIP](https://github.com/NVIDIA/MinkowskiEngine#pip) installation
+- [Conda](https://github.com/NVIDIA/MinkowskiEngine#anaconda) installation
+- [Python](https://github.com/NVIDIA/MinkowskiEngine#system-python) installation
+- [Docker](https://github.com/NVIDIA/MinkowskiEngine#docker) installation
 
-2. Install Poetry:
+
+1. Install Poetry:
    ```sh
    curl -sSL https://install.python-poetry.org | python3 -
 
-3. Install project dependencies:
-poetry install
+2. Install project dependencies:
+poetry install  
 
-4. Set config parameters in config/config.yaml file
+3. Set config parameters in config/config.yaml  
 
-5. poetry run python src/main.py
-
-6. python main.py  
+4. poetry run python src/main.py  
 
 
-### Dependencies
+## Features
 
-MinkowskiEngine: calculation of sparse tensors  
+- Unlimited high-dimensional sparse tensor support
+- All standard neural network layers (Convolution, Pooling, Broadcast, etc.)
+- Dynamic computation graph
+- Custom kernel shapes
+- Multi-GPU training
+- Multi-threaded kernel map
+- Multi-threaded compilation
+- Highly-optimized GPU kernels
 
-Open3d: manipulation of points (coords), colors and normals 
+
+## Requirements
+
+- Ubuntu >= 14.04
+- CUDA >= 10.1.243 and **the same CUDA version used for pytorch** (e.g. if you use conda cudatoolkit=11.1, use CUDA=11.1 for MinkowskiEngine compilation)
+- pytorch >= 1.7 To specify CUDA version, please use conda for installation. You must match the CUDA version pytorch uses and CUDA version used for Minkowski Engine installation. `conda install -y -c nvidia -c pytorch pytorch=1.8.1 cudatoolkit=10.2`)
+- python >= 3.6
+- ninja (for installation)
+- GCC >= 7.4.0
 
 
 # Program structure
@@ -200,12 +215,18 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Useful links
+## Useful links and other projects using Minkowski Engine
 
 * [Point clouds][Point-clouds]
 * [Open3d][open3d-url]
 * [Minkowski Engine][MinkowskiEngine-url]
-
+- Segmentation: [3D and 4D Spatio-Temporal Semantic Segmentation, CVPR'19](https://github.com/chrischoy/SpatioTemporalSegmentation)
+- Representation Learning: [Fully Convolutional Geometric Features, ICCV'19](https://github.com/chrischoy/FCGF)
+- 3D Registration: [Learning multiview 3D point cloud registration, CVPR'20](https://arxiv.org/abs/2001.05119)
+- 3D Registration: [Deep Global Registration, CVPR'20](https://arxiv.org/abs/2004.11540)
+- Pattern Recognition: [High-Dimensional Convolutional Networks for Geometric Pattern Recognition, CVPR'20](https://arxiv.org/abs/2005.08144)
+- Detection: [Generative Sparse Detection Networks for 3D Single-shot Object Detection, ECCV'20](https://arxiv.org/abs/2006.12356)
+- Image matching: [Sparse Neighbourhood Consensus Networks, ECCV'20](https://www.di.ens.fr/willow/research/sparse-ncnet/)
 
 
 
