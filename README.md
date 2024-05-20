@@ -19,7 +19,7 @@
   <p align="center">
     A toolkit for preprocessing, training and inference
     <br />
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main"><strong>Explore the docs »</strong></a>
+    <a href="https://arash.gitbook.io/rptu-ai-toolkit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">View Demo</a>
