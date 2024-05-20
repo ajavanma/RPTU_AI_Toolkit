@@ -206,7 +206,7 @@ Don't forget to give the project a star! Thanks again!
 * [Open3d][open3d-url]
 * [Minkowski Engine][MinkowskiEngine-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- CONTACT -->
@@ -222,6 +222,7 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
