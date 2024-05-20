@@ -22,8 +22,6 @@
     <a href="https://arash.gitbook.io/rptu-ai-toolkit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">View Demo</a>
-    ·
     <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/issues/new">Report Bug or Request Feature</a>
   </p>
 </div>
@@ -102,41 +100,36 @@ poetry install
 
 5. poetry run python src/main.py
 
-
-6. set config parameters in config.yaml file   
-
-7. conda activate mink  
-
-8. python main.py  
+6. python main.py  
 
 
 ### Dependencies
 
 MinkowskiEngine: calculation of sparse tensors  
 
-o3d: manipulation of points (coords), colors and normals 
+Open3d: manipulation of points (coords), colors and normals 
 
 
 # Program structure
 Data Preparation
 1. Raw Data Analysis: Generate report of each asc and pcd file, check for skewed distribution.
-2. Preprocessing:
+2. Preprocessing:  
 Data Preparation: Feature selection, data cleansing, transforming, outlier removal, scaling (normalization/standardization).
 Feature Engineering: Imputation (managing missing data), one-hot encoding of categorical features.
-3. Reports
-Training and Evaluation
-Iteration (hyperparameter tuning)
-Test and Verification
-Visualizing
+3. Reports  
+Training and Evaluation  
+Iteration (hyperparameter tuning)  
+Test and Verification  
+Visualizing  
 
 
 
 # File hierarchy
 data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   &nbsp;   # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
-logs/  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; &nbsp;   &nbsp;   &nbsp;  &nbsp;     # Logs and reports  
+logs/   
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
-src/    &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;   &nbsp;   &nbsp;    # Source code  
+src/      
 | ── __init__.py  
 | ── config/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── config.yaml  
@@ -163,22 +156,21 @@ tests/
 ## Usage
 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [x] Add logs
+- [ ] Add Demo
+- [ ] Add Notebooks
 - [ ] Multi-preprocessing Support
-    - [x] python
-    - [x] c++
+    - [x] cpu
+    - [x] gpu
 
-See the [open issues](https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ajavanma/RPTU_AI_Toolkit/issues) for a full list of proposed features (and known issues).
 
 
 
@@ -213,31 +205,21 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [Arash Javanmardi](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
 
-[Useful Links](https://github.com/ajavanma/RPTU_AI_Toolkit)
-
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Useful links
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
+* [Point clouds][Point-clouds]
+* [Open3d][open3d-url]
+* [Minkowski Engine][MinkowskiEngine-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
@@ -249,7 +231,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [PyTorch-url]: https://pytorch.org/
 [MinkowskiEngine]: https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white
 [MinkowskiEngine-url]: https://github.com/NVIDIA/MinkowskiEngine
-
+[open3d-url]: https://www.open3d.org/
+[Point-clouds]: https://en.wikipedia.org/wiki/Point_cloud
 
 
 
