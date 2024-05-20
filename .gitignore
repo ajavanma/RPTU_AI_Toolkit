@@ -1,7 +1,6 @@
 # Folders
 models/
 lightning_logs/
-.github/
 
 # Sensitive data
 .env
@@ -34,3 +33,5 @@ venv/
 __pycache__/
 .ipynb_checkpoints/
 
+# lock files
+poetry.lock

@@ -1,5 +1,4 @@
 # To ensure the output of the model has the correct number of classes.
-
 import unittest
 import torch
 from model import MyModel
