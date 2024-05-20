@@ -1,5 +1,7 @@
 # Folders
 models/
+lightning_logs/
+.github/
 
 # Sensitive data
 .env
@@ -31,4 +33,4 @@ venv/
 # python and jupyter notebook files
 __pycache__/
 .ipynb_checkpoints/
-lightning_logs/
+
