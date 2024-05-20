@@ -24,9 +24,7 @@
     <br />
     <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">View Demo</a>
     ·
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/issues/new">Report Bug or Request Feature</a>
   </p>
 </div>
 
