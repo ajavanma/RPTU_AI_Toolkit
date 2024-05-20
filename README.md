@@ -60,7 +60,7 @@
 
 This is a toolkit to train a ML model for semantic segmentation of point clouds.  
 
-In this repository it is used to make BIM models based on [IfcOpenShell](http://ifcopenshell.org/]) standard from lidar scans.  
+In this repository it is used to make BIM models based on [IfcOpenShell](https://ifcopenshell.org/]) standard from lidar scans.  
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
     <img src="media/column.png" alt="Logo" width="490" height="275">
@@ -81,7 +81,7 @@ In this repository it is used to make BIM models based on [IfcOpenShell](http://
 
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/o3d.png" alt="Logo" width="85" height="85">
+    <img src="media/o3d.png" alt="Logo" width="80" height="80">
   </a>
 
 
@@ -131,7 +131,8 @@ poetry install
 
 # Program structure
 Data Preparation
-1. Raw Data Analysis: Generate report of each asc and pcd file, check for skewed distribution.
+1. Raw Data Analysis:  
+Generate report of each asc and pcd file, check for skewed distribution.
 
 2. Preprocessing:  
 Data Preparation: Feature selection, data cleansing, transforming, outlier removal, scaling (normalization/standardization).
@@ -166,7 +167,7 @@ src/
 | ── data/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── preprocessing.py  
 | ── models/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── model.py  
+│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── model.bin  
 | ── training/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── train.py  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── evaluate.py  
