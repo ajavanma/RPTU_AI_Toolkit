@@ -34,3 +34,4 @@ venv/
 __pycache__/
 .ipynb_checkpoints/
 
+poetry.lock
