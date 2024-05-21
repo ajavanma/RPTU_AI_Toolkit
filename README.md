@@ -60,7 +60,7 @@
 
 This is a toolkit to train a ML model for semantic segmentation of point clouds.  
 
-In this repository it is used to make BIM models based on [IfcOpenShell](https://ifcopenshell.org/]) standard from lidar scans.  
+It covers preprocessing, training and inference, and in this repository it is used to make BIM models based on [IfcOpenShell](https://ifcopenshell.org/]) standard from lidar scans.  
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
     <img src="media/column.png" alt="Logo" width="490" height="275">
@@ -88,23 +88,23 @@ In this repository it is used to make BIM models based on [IfcOpenShell](https:/
 
 ## Installation
 
-0. You can install the Minkowski Engine with `pip`, with anaconda, or on the system directly.  
+1. You can install the Minkowski Engine with `pip`, with anaconda, or on the system directly.  
 - [PIP](https://github.com/NVIDIA/MinkowskiEngine#pip) installation
 - [Conda](https://github.com/NVIDIA/MinkowskiEngine#anaconda) installation
 - [Python](https://github.com/NVIDIA/MinkowskiEngine#system-python) installation
 - [Docker](https://github.com/NVIDIA/MinkowskiEngine#docker) installation
 
 
-1. Install Poetry:
+2. Install Poetry:
    ```sh
    curl -sSL https://install.python-poetry.org | python3 -
 
-2. Install project dependencies:
+3. Install project dependencies:
 poetry install  
 
-3. Set config parameters in config/config.yaml  
+4. Set config parameters in config/config.yaml  
 
-4. poetry run python src/main.py  
+5. poetry run python src/main.py  
 
 
 ## Features
@@ -129,7 +129,7 @@ poetry install
 - GCC >= 7.4.0
 
 
-# Program structure
+## Program structure
 Data Preparation
 1. Raw Data Analysis:  
 Generate report of each asc and pcd file, check for skewed distribution.
@@ -152,7 +152,7 @@ Visualizing
 
 
 
-# File hierarchy
+### File hierarchy
 data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   &nbsp;   # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
 logs/   
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
