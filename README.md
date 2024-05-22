@@ -50,18 +50,20 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#installation">Installation</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#requirements">Requirements</a></li>
       </ul>
     </li>
+    <li><a href="#program-structure">Program structure</a></li>
+    <li><a href="#file-hierarchy">File hierarchy</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#useful-links">Useful links</a></li>
+    <li><a href="#contact">contact</a></li>
+    <li><a href="#License">License</a></li>
+
   </ol>
 </details>
 
