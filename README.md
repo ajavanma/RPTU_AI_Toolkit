@@ -40,30 +40,21 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+
+## Table of Contents
+
+1. [About The Project](#about-the-project)
+    * [Built With](#built-with)
+2. [Installation](#installation)
+3. [Features](#features)
+4. [Requirements](#requirements)
+5. [Program structure](#program-structure)
+    * [File hierarchy](#file-hierarchy)
+6. [Usage](#usage)
+7. [Roadmap](#roadmap)
+8. [Useful links](#Useful-links-and-other-projects-using-Minkowski-Engine)
+9. [Contact](#contact)
+10. [License](#license)
 
 
 
@@ -168,8 +159,8 @@ data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   
 logs/   
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
+tests/  
 src/      
-| ── __init__.py  
 | ── config/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── config.yaml  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── preprocessing.yaml  
@@ -187,7 +178,6 @@ src/
 | ── utils/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── utils.py  
 └ ── main.py  
-tests/  
 
 
 
