@@ -75,9 +75,9 @@ It covers preprocessing, training and inference, and in this repository it is us
 
 <div align="center">
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/column.png" alt="Logo" width="490" height="275">
+    <img src="media/column.png" alt="Logo" width="392" height="220">
   </a><a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/door.png" alt="Logo" width="490" height="275">
+    <img src="media/door.png" alt="Logo" width="392" height="220">
   </a>
 </div>
 
@@ -87,14 +87,13 @@ It covers preprocessing, training and inference, and in this repository it is us
 ### Built With
 
 
-* [![PyTorch][PyTorch]][PyTorch-url]
-* [![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
-
-
-
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
+<div align="center">
+  * [![PyTorch][PyTorch]][PyTorch-url]
+  * [![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
     <img src="media/o3d.png" alt="Logo" width="80" height="80">
   </a>
+</div>
 
 
 
