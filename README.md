@@ -87,9 +87,9 @@ It covers preprocessing, training and inference, and in this repository it is us
 ### Built With
 
 
-* [![PyTorch][https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white]][https://pytorch.org/]
-* [![MinkowskiEngine][https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white]][https://github.com/NVIDIA/MinkowskiEngine]
+[![PyTorch][PyTorch]][PyTorch-url]
 
+[![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
     <img src="media/o3d.png" alt="Logo" width="80" height="80">
