@@ -1,11 +1,9 @@
 <a name="readme-top"></a>
 
-stable release version: ![version](https://img.shields.io/badge/version-1.2.3-blue)
+![version](https://img.shields.io/badge/version-1.2.3-blue)
 <a href="https://circleci.com/gh/badges/shields/tree/master">
         <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
+ https://img.shields.io/badge/License-MIT-blue
 
 
 <!-- PROJECT LOGO -->
@@ -221,7 +219,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 ## Contact
 
 
-[Arash Javanmardi](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
+[![Arash Javanmardi][linkedin-shield]][linkedin-url]
 
 
 
