@@ -87,13 +87,13 @@ It covers preprocessing, training and inference, and in this repository it is us
 ### Built With
 
 
-<div align="center">
-  * [![PyTorch][PyTorch]][PyTorch-url]
-  * [![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
+* [![PyTorch][https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white]][https://pytorch.org/]
+* [![MinkowskiEngine][https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white]][https://github.com/NVIDIA/MinkowskiEngine]
+
+
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
     <img src="media/o3d.png" alt="Logo" width="80" height="80">
   </a>
-</div>
 
 
 
@@ -216,7 +216,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 
 * [Point clouds][Point-clouds]
 * [Open3d][open3d-url]
-* [Minkowski Engine][MinkowskiEngine-url]
+* [Minkowski Engine][https://github.com/NVIDIA/MinkowskiEngine]
 - Segmentation: [3D and 4D Spatio-Temporal Semantic Segmentation, CVPR'19](https://github.com/chrischoy/SpatioTemporalSegmentation)
 - Representation Learning: [Fully Convolutional Geometric Features, ICCV'19](https://github.com/chrischoy/FCGF)
 - 3D Registration: [Learning multiview 3D point cloud registration, CVPR'20](https://arxiv.org/abs/2001.05119)
