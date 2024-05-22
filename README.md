@@ -1,7 +1,8 @@
 <a name="readme-top"></a>
 
-
-[![Issues][issues-shield]][issues-url]
+stable release version: ![version](https://img.shields.io/badge/version-1.2.3-blue)
+<a href="https://circleci.com/gh/badges/shields/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -234,8 +235,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/issues
-<a href="https://circleci.com/gh/badges/shields/tree/master">
-        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
