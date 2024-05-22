@@ -219,7 +219,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 ## Contact
 
 
-![Contact](https://img.shields.io/badge/Linked-In-blue)
+[![Contact](https://img.shields.io/badge/Linked-In-blue)](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
 
 
 <!-- LICENSE -->
