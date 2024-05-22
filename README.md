@@ -159,8 +159,8 @@ data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   
 logs/   
 models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
 notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
+tests/  
 src/      
-| ── __init__.py  
 | ── config/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── config.yaml  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── preprocessing.yaml  
@@ -178,7 +178,6 @@ src/
 | ── utils/  
 │     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── utils.py  
 └ ── main.py  
-tests/  
 
 
 
