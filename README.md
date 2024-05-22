@@ -1,9 +1,21 @@
 <a name="readme-top"></a>
 
-[![version](https://img.shields.io/badge/version-0.0.1-blue)](https://github.com/ajavanma/RPTU_AI_Toolkit/releases/tag/v0.0.1)
-<a href="https://github.com/ajavanma/RPTU_AI_Toolkit/actions">
-        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
-[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/ajavanma/RPTU_AI_Toolkit/blob/dev/LICENSE)
+<div align="center">
+  
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/releases/tag/v0.0.1" style="display: inline-block;">
+    <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="version">
+  </a>
+  
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/actions" style="display: inline-block;">
+    <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status">
+  </a>
+  
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/dev/LICENSE" style="display: inline-block;">
+    <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
+  </a>
+  
+</div>
+
 
 
 <!-- PROJECT LOGO -->
