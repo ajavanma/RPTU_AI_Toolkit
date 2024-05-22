@@ -73,12 +73,13 @@ This is a toolkit to train a ML model for semantic segmentation of point clouds.
 
 It covers preprocessing, training and inference, and in this repository it is used to make BIM models based on [IfcOpenShell](https://ifcopenshell.org/) standard from lidar scans.  
 
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
+<div align="center">
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
     <img src="media/column.png" alt="Logo" width="490" height="275">
-  </a>
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
+  </a><a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
     <img src="media/door.png" alt="Logo" width="490" height="275">
   </a>
+</div>
 
 
 
