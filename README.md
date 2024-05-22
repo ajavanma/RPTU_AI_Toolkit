@@ -1,10 +1,9 @@
 <a name="readme-top"></a>
 
-
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
+![version](https://img.shields.io/badge/version-0.0.1-blue)
+<a href="https://circleci.com/gh/badges/shields/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
+![License](https://img.shields.io/badge/License-MIT-blue)
 
 
 <!-- PROJECT LOGO -->
@@ -220,7 +219,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 ## Contact
 
 
-[Arash Javanmardi](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
+[![Arash Javanmardi][linkedin-shield]][linkedin-url]
 
 
 
@@ -234,8 +233,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/issues
-<a href="https://circleci.com/gh/badges/shields/tree/master">
-        <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
