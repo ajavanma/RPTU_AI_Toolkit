@@ -50,22 +50,36 @@
       </ul>
     </li>
     <li>
-      <a href="#installation">Installation</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#program-structure">Program structure</a></li>
-    <li><a href="#file-hierarchy">File hierarchy</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#useful-links">Useful links</a></li>
-    <li><a href="#contact">contact</a></li>
-    <li><a href="#License">License</a></li>
-
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+
+
+
+## Table of Contents
+
+1. [About The Project](#about-the-project)
+    * [Built With](#built-with)
+2. [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+3. [Usage](#usage)
+4. [Roadmap](#roadmap)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
+8. [Acknowledgments](#acknowledgments)
 
 
 
