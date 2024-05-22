@@ -52,7 +52,7 @@
     * [File hierarchy](#file-hierarchy)
 6. [Usage](#usage)
 7. [Roadmap](#roadmap)
-8. [Useful links](#useful-links)
+8. [Useful links](#Useful-links-and-other-projects-using-Minkowski-Engine)
 9. [Contact](#contact)
 10. [License](#license)
 
