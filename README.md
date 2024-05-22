@@ -45,16 +45,16 @@
 
 1. [About The Project](#about-the-project)
     * [Built With](#built-with)
-2. [Installation](#installation)
-3. [Features](#features)
-4. [Requirements](#requirements)
-5. [Program structure](#program-structure)
+    * [Features](#features)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Program structure](#program-structure)
     * [File hierarchy](#file-hierarchy)
-6. [Usage](#usage)
-7. [Roadmap](#roadmap)
-8. [Useful links](#Useful-links-and-other-projects-using-Minkowski-Engine)
-9. [Contact](#contact)
-10. [License](#license)
+5. [Usage](#usage)
+6. [Roadmap](#roadmap)
+7. [Useful links](#Useful-links-and-other-projects-using-Minkowski-Engine)
+8. [Contact](#contact)
+9. [License](#license)
 
 
 
@@ -87,6 +87,28 @@ It covers preprocessing, training and inference, and in this repository it is us
   </a>
 
 
+## Features
+
+- Unlimited high-dimensional sparse tensor support
+- All standard neural network layers (Convolution, Pooling, Broadcast, etc.)
+- Dynamic computation graph
+- Custom kernel shapes
+- Multi-GPU training
+- Multi-threaded kernel map
+- Multi-threaded compilation
+- Highly-optimized GPU kernels
+
+
+## Requirements
+
+- Ubuntu >= 14.04
+- CUDA >= 10.1.243 and **the same CUDA version used for pytorch** (e.g. if you use conda cudatoolkit=11.1, use CUDA=11.1 for MinkowskiEngine compilation)
+- pytorch >= 1.7 To specify CUDA version, please use conda for installation. You must match the CUDA version pytorch uses and CUDA version used for Minkowski Engine installation. `conda install -y -c nvidia -c pytorch pytorch=1.8.1 cudatoolkit=10.2`)
+- python >= 3.6
+- ninja (for installation)
+- GCC >= 7.4.0
+
+
 
 ## Installation
 
@@ -109,26 +131,9 @@ poetry install
 5. poetry run python src/main.py  
 
 
-## Features
-
-- Unlimited high-dimensional sparse tensor support
-- All standard neural network layers (Convolution, Pooling, Broadcast, etc.)
-- Dynamic computation graph
-- Custom kernel shapes
-- Multi-GPU training
-- Multi-threaded kernel map
-- Multi-threaded compilation
-- Highly-optimized GPU kernels
 
 
-## Requirements
 
-- Ubuntu >= 14.04
-- CUDA >= 10.1.243 and **the same CUDA version used for pytorch** (e.g. if you use conda cudatoolkit=11.1, use CUDA=11.1 for MinkowskiEngine compilation)
-- pytorch >= 1.7 To specify CUDA version, please use conda for installation. You must match the CUDA version pytorch uses and CUDA version used for Minkowski Engine installation. `conda install -y -c nvidia -c pytorch pytorch=1.8.1 cudatoolkit=10.2`)
-- python >= 3.6
-- ninja (for installation)
-- GCC >= 7.4.0
 
 
 ## Program structure
