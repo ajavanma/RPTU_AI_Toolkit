@@ -1,9 +1,10 @@
 <a name="readme-top"></a>
 
-![version](https://img.shields.io/badge/version-1.2.3-blue)
+![version](https://img.shields.io/badge/version-0.0.1-blue)
 <a href="https://circleci.com/gh/badges/shields/tree/master">
         <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status"></a>
  https://img.shields.io/badge/License-MIT-blue
+<img alt="License MIT" src=" https://img.shields.io/badge/License-MIT-blue">
 
 
 <!-- PROJECT LOGO -->
