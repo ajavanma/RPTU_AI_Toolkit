@@ -75,9 +75,9 @@ It covers preprocessing, training and inference, and in this repository it is us
 
 <div align="center">
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/column.png" alt="Logo" width="490" height="275">
+    <img src="media/column.png" alt="Logo" width="392" height="220">
   </a><a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/door.png" alt="Logo" width="490" height="275">
+    <img src="media/door.png" alt="Logo" width="392" height="220">
   </a>
 </div>
 
@@ -87,10 +87,9 @@ It covers preprocessing, training and inference, and in this repository it is us
 ### Built With
 
 
-* [![PyTorch][PyTorch]][PyTorch-url]
-* [![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
+[![PyTorch][PyTorch]][PyTorch-url]
 
-
+[![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
 
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
     <img src="media/o3d.png" alt="Logo" width="80" height="80">
@@ -217,7 +216,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 
 * [Point clouds][Point-clouds]
 * [Open3d][open3d-url]
-* [Minkowski Engine][MinkowskiEngine-url]
+* [Minkowski Engine][https://github.com/NVIDIA/MinkowskiEngine]
 - Segmentation: [3D and 4D Spatio-Temporal Semantic Segmentation, CVPR'19](https://github.com/chrischoy/SpatioTemporalSegmentation)
 - Representation Learning: [Fully Convolutional Geometric Features, ICCV'19](https://github.com/chrischoy/FCGF)
 - 3D Registration: [Learning multiview 3D point cloud registration, CVPR'20](https://arxiv.org/abs/2001.05119)
