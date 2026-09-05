@@ -11,6 +11,7 @@ import pickle
 from tqdm.contrib.concurrent import process_map
 from colorama import Fore
 from utils import load_config_file, get_logger
+from src.data.preprocessing_results import preprocess_file_pair, report_preprocessing_results
 import time 
 
 logger = get_logger("logs/log-preprocess_minkowski.txt", __name__)
@@ -173,27 +174,18 @@ class Preprocessor:
             pickle.dump(data, f)
 
 def process_pcd(matched_file_pair, voxel_size: float):
-    pcd_file, asc_file = matched_file_pair
-    try:
-        preprocessor = Preprocessor(voxel_size)
-        preprocessor.process_files(pcd_file, asc_file)
-    except Exception as e:
-        logger.error(f"An error occurred during preprocessing {pcd_file} or its corresponding asc file {asc_file}: {e}")
+    return preprocess_file_pair(matched_file_pair, voxel_size, Preprocessor, logger)
 
 def process_pcd_with_error_handling(matched_file_pair, voxel_size: float):
-    pcd_file, asc_file = matched_file_pair
-    try:
-        process_pcd(matched_file_pair, voxel_size)
-        return True
-    except Exception as e:
-        logger.error(f"An error occurred during preprocessing {pcd_file} or its corresponding asc file {asc_file}: {e}")
-        return False
+    return process_pcd(matched_file_pair, voxel_size)
     
 def main():
     pcd_files = sorted(list(Path(cfg.pcd_files_path).glob('*.pcd')))
     asc_files = sorted(list(Path(cfg.asc_files_path).glob('*.asc')))
 
     matched_file_pairs = files_match_making(pcd_files, asc_files)
+    if not matched_file_pairs:
+        return report_preprocessing_results([], logger)
 
     results = process_map(  
         process_pcd_with_error_handling, 
@@ -205,9 +197,4 @@ def main():
         func_args=(cfg.voxel_size,), 
     )
 
-    failed_files_count = results.count(False)
-    if failed_files_count > 0:
-        logger.error(f"{failed_files_count} files failed to process.")
-    else:
-        logger.info("All files processed successfully.")
-
+    return report_preprocessing_results(results, logger)
