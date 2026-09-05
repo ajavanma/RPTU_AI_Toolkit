@@ -8,7 +8,7 @@ from config import Config
 import numpy.lib.recfunctions as rfn
 from utils.file_matching import files_match_making
 import pickle
-from tqdm.contrib.concurrent import process_map
+from src.data.preprocessing_workers import process_file_pairs
 from colorama import Fore
 from utils import load_config_file, get_logger
 from src.data.preprocessing_results import preprocess_file_pair, report_preprocessing_results
@@ -187,14 +187,11 @@ def main():
     if not matched_file_pairs:
         return report_preprocessing_results([], logger)
 
-    results = process_map(  
-        process_pcd_with_error_handling, 
+    results = process_file_pairs(
+        process_pcd_with_error_handling,
         matched_file_pairs,
-        chunksize=1,
+        voxel_size=cfg.voxel_size,
         max_workers=cfg.num_workers,
-        desc="Processing files",
-        unit="file",
-        func_args=(cfg.voxel_size,), 
     )
 
     return report_preprocessing_results(results, logger)
