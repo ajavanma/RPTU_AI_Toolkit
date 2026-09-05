@@ -5,6 +5,8 @@ from concurrent.futures import ProcessPoolExecutor
 from functools import partial
 from unittest.mock import patch
 
+from tqdm.auto import tqdm
+
 from src.data.preprocessing_workers import process_file_pairs
 
 
@@ -24,12 +26,18 @@ def failing_job(matched_file_pair, voxel_size):
 class TestPreprocessingWorkers(unittest.TestCase):
     def setUp(self):
         # Exercise serialization on Linux too, rather than relying on fork.
+        context = multiprocessing.get_context('spawn')
         pool = patch(
             'concurrent.futures.ProcessPoolExecutor',
-            partial(ProcessPoolExecutor, mp_context=multiprocessing.get_context('spawn')),
+            partial(ProcessPoolExecutor, mp_context=context),
         )
         pool.start()
         self.addCleanup(pool.stop)
+
+        # tqdm shares its progress lock with workers; it must use their context.
+        previous_lock = tqdm.get_lock()
+        tqdm.set_lock(context.RLock())
+        self.addCleanup(tqdm.set_lock, previous_lock)
 
     def test_delivers_each_pair_and_voxel_size_to_child_processes(self):
         pairs = [('second.pcd', 'second.asc'), ('first.pcd', 'first.asc')]
