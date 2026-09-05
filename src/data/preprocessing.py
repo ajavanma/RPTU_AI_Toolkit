@@ -210,3 +210,4 @@ def main():
         logger.error(f"{failed_files_count} files failed to process.")
     else:
         logger.info("All files processed successfully.")
+
