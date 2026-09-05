@@ -11,6 +11,7 @@ import shutil
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from config import Config
 from pathlib import Path
+from utils.file_matching import files_match_making
 
 def get_logger(filename: str, name: str = None):
     log_directory = os.path.dirname(filename)
@@ -125,24 +126,6 @@ paths = {
     'val': cfg.val_path,
     'test': cfg.test_path
 }
-
-# find match based on file names, used for training
-def files_match_making(pcd_files, asc_files):
-    pcd_files = sorted(list(Path(cfg.pcd_files_path).glob('*.pcd')))
-    asc_files = sorted(list(Path(cfg.asc_files_path).glob('*.asc')))
-
-    matched_pairs = []
-    for pcd_file in pcd_files:
-        pcd_file_name = os.path.splitext(os.path.basename(pcd_file))[0]
-        for asc_file in asc_files:
-            asc_file_name = os.path.splitext(os.path.basename(asc_file))[0]
-            if pcd_file_name == asc_file_name:
-                matched_pairs.append((pcd_file, asc_file))
-                break
-        else:
-            print(f"Warning: No corresponding ASC file found for PCD file {pcd_file}.")
-    return matched_pairs
-
 
 def calculate_metrics(all_preds, all_labels):
     preds = np.concatenate(all_preds)
