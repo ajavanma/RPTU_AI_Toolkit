@@ -6,7 +6,7 @@ import open3d as o3d
 import numpy as np
 from config import Config
 import numpy.lib.recfunctions as rfn
-from utils import files_match_making
+from utils.file_matching import files_match_making
 import pickle
 from tqdm.contrib.concurrent import process_map
 from colorama import Fore
