@@ -6,8 +6,8 @@
     <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="version">
   </a>
   
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/actions" style="display: inline-block;">
-    <img src="https://img.shields.io/circleci/project/github/badges/shields/master" alt="build status">
+  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml" style="display: inline-block;">
+    <img src="https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml/badge.svg?branch=main" alt="CPU unit tests">
   </a>
   
   <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/dev/LICENSE" style="display: inline-block;">
@@ -100,6 +100,7 @@ It covers preprocessing, training and inference, and in this repository it is us
 2. Install Poetry:
    ```sh
    curl -sSL https://install.python-poetry.org | python3 -
+   ```
 
 3. Install project dependencies:
 poetry install  
@@ -206,7 +207,7 @@ _Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
 
 * [Point clouds][Point-clouds]
 * [Open3d][open3d-url]
-* [Minkowski Engine][https://github.com/NVIDIA/MinkowskiEngine]
+* [Minkowski Engine][MinkowskiEngine-url]
 - Segmentation: [3D and 4D Spatio-Temporal Semantic Segmentation, CVPR'19](https://github.com/chrischoy/SpatioTemporalSegmentation)
 - Representation Learning: [Fully Convolutional Geometric Features, ICCV'19](https://github.com/chrischoy/FCGF)
 - 3D Registration: [Learning multiview 3D point cloud registration, CVPR'20](https://arxiv.org/abs/2001.05119)
