@@ -1,0 +1,8 @@
+# Linux x86_64, CPython 3.11. Install before `pip install '.[ml]'`.
+# Match the PyTorch/CUDA ABI encoded in the WarpConvNet release wheel.
+# https://pytorch.org/get-started/previous-versions/#v2100
+# https://github.com/NVlabs/WarpConvNet/releases/tag/v1.8.2
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.10.0+cu128
+safetensors[torch]==0.7.0
+warpconvnet @ https://github.com/NVlabs/WarpConvNet/releases/download/v1.8.2/warpconvnet-1.8.2%2Btorch2.10cu128-cp311-cp311-linux_x86_64.whl#sha256=4a89e5741b0f155ee68291a1ca4f1c47dd7483203f54f797f92e36c1221af629

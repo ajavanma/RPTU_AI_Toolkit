@@ -11,12 +11,7 @@ import textwrap
 import unittest
 
 
-FUTURE_COMMANDS = (
-    "train",
-    "evaluate",
-    "predict",
-    "benchmark",
-)
+FUTURE_COMMANDS = ("benchmark",)
 
 
 class InstalledCliTests(unittest.TestCase):
@@ -112,7 +107,7 @@ class InstalledCliTests(unittest.TestCase):
                 "config_validation": True,
                 "dataset_preparation": True,
                 "prepared_dataset_validation": True,
-                "ml_pipeline": False,
+                "ml_pipeline": True,
                 "gpu_runtime": "not_checked",
             },
         )
@@ -142,7 +137,8 @@ class InstalledCliTests(unittest.TestCase):
             runpy.run_module('rptu_ai_toolkit', run_name='__main__')
             """
         )
-        for arguments in (("--help",), ("doctor",), ("doctor", "--json")):
+        for arguments in (("--help",), ("doctor",), ("doctor", "--json"),
+                          ("train", "--help"), ("evaluate", "--help"), ("predict", "--help")):
             with self.subTest(arguments=arguments):
                 result = self.run_process([sys.executable, "-c", guard, *arguments])
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
@@ -233,6 +229,15 @@ class InstalledCliTests(unittest.TestCase):
         ):
             with self.subTest(arguments=arguments):
                 self.assert_usage_error(self.run_cli(*arguments))
+
+    def test_ml_commands_require_explicit_input_and_output(self):
+        for command in ("train", "evaluate", "predict"):
+            with self.subTest(command=command):
+                result = self.run_cli(command)
+                self.assert_usage_error(result)
+                self.assertIn("--prepared", result.stderr)
+                self.assertIn("--output", result.stderr)
+                self.assertNotIn("not implemented", result.stderr)
 
     def test_future_commands_are_explicitly_unavailable_but_offer_help(self):
         for command in FUTURE_COMMANDS:

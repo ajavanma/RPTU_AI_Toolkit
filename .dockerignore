@@ -1,0 +1,13 @@
+# The image receives package source, not local datasets, checkpoints, or secrets.
+**
+!pyproject.toml
+!MANIFEST.in
+!README.md
+!LICENSE
+!src/
+!src/rptu_ai_toolkit/
+!src/rptu_ai_toolkit/**
+!requirements/
+!requirements/gpu-cu128.txt
+**/__pycache__/
+**/*.pyc

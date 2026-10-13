@@ -1,6 +1,6 @@
 # Dataset contract, version 1
 
-This is the reference for the currently supported CPU data workflow. For an executable example, start with the [CPU quickstart](quickstart.md).
+This is the shared data contract for GPU and CPU workflows. For an executable example, start with the [GPU and CPU quickstart](quickstart.md).
 
 The CPU data pipeline uses a JSON manifest and numeric scene files. It does not
 load Python pickles, initialize CUDA, or require a model. Synthetic fixtures
@@ -108,8 +108,9 @@ declared class, and no class has special meaning because of its numeric ID.
 
 `DatasetManifest.encode_labels()` rejects unknown dataset IDs.
 `DatasetManifest.decode_labels()` restores the original IDs, including the
-ignore label, and rejects training IDs outside `-1..C-1`. Preserve manifest class
-order alongside any future model or prepared artifact.
+ignore label, and rejects training IDs outside `-1..C-1`. Prepared artifacts and
+model bundles preserve this class order, and model loading checks it against the
+dataset contract.
 
 ## PLY input
 
@@ -189,9 +190,11 @@ Each prepared NPZ contains:
 `N` is the original point count and `M` is the number of retained voxels.
 `point_labels` preserve conflicting point-level ground truth that majority
 aggregation would otherwise discard. They also retain targets for nonfinite
-rows; a future evaluator must use `point_to_voxel >= 0` and
-`point_labels != -1` when selecting valid evaluation targets. Both label arrays
-are absent for an unlabeled prediction scene.
+rows. Evaluation uses `point_to_voxel >= 0` and `point_labels != -1` together to
+select valid targets, then maps each predicted voxel class back to the original
+row before scoring. Both label arrays are absent for an unlabeled prediction
+scene. Prediction exports preserve every row and point ID, assigning the dataset's
+ignore label and a false validity mask to removed rows.
 
 The seeded synthetic generator produces identical array and manifest bytes for
 the same implementation, seed, and dependency versions. This is not a guarantee

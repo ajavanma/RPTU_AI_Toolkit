@@ -14,19 +14,21 @@ without arguments it prints help instead of opening an interactive menu.
 | `rptu inspect --manifest PATH [--json]` | Validate the raw dataset manifest, checksums, scene arrays, and labels. |
 | `rptu inspect --prepared PATH [--json]` | Validate prepared metadata, every scene archive, and point/voxel consistency. |
 | `rptu preprocess --manifest PATH --output DIR --voxel-size SIZE [--json]` | Filter invalid rows and voxelize the dataset on the CPU. |
-| `rptu train`, `rptu evaluate`, `rptu predict`, `rptu benchmark` | Reserved commands; report that they are not implemented. |
+| `rptu train --prepared PATH --output DIR` | Train WarpConvNet on CUDA or the PyTorch fallback. |
+| `rptu evaluate --prepared PATH --model DIR --output DIR` | Report original-point metrics for the selected split. |
+| `rptu predict --prepared PATH --model DIR --output DIR` | Export original dataset labels and point identities. |
+| `rptu benchmark` | Reserved for the benchmark workflow. |
 
 Run `rptu COMMAND --help` for a command's arguments.
 
 ## Diagnostics and configuration
 
-`doctor` reads distribution metadata without importing ML libraries. It reports
-configuration validation, CPU dataset preparation, and prepared-dataset validation
-as available, `ml_pipeline` as `false`, and `gpu_runtime` as `"not_checked"`. Finding a PyTorch or WarpConvNet
-installation does not validate CUDA execution.
+`doctor` reads distribution metadata without importing ML libraries. It lists the
+installed dependencies and available commands. Device selection happens when an
+ML command starts, so diagnostics remain usable in a base installation.
 
 `config validate` checks structure and path rules without requiring a dataset,
-creating directories, or initializing a GPU. Dataset commands use explicit CLI
+creating directories, or initializing a GPU. Dataset and ML commands use explicit CLI
 arguments and a separate JSON manifest; they currently do not read application
 YAML. See [configuration](configuration.md).
 
@@ -65,11 +67,26 @@ The [dataset contract](dataset-contract.md) defines split rules, class mappings,
 feature reductions, numeric limits, and the prepared output format. For a prepared
 bundle, pass its `prepared.json` to `inspect --prepared`.
 
+## Model commands
+
+Training accepts `--backend auto|warpconvnet|torch`, `--device auto|cpu|cuda`,
+`--epochs` (20), `--learning-rate` (0.001), and `--seed` (0). Automatic selection
+uses WarpConvNet/CUDA when available and the PyTorch/CPU fallback otherwise.
+
+Evaluation and prediction take `--model DIR` and use its saved architecture.
+Their default splits are `test` and `predict`, respectively; `--split` accepts
+`train`, `val`, `test`, or `predict`. Evaluation requires at least one valid,
+nonignored labeled point; unlabeled scenes contribute no scored points.
+
+All three commands accept `--max-voxels` (100000 per scene), `--device`, and
+`--json`. Outputs require new directories. Errors do not silently overwrite prior
+models, trim scenes, or switch a saved model's architecture. See [training](train.md)
+and [test and evaluation](test.md).
+
 ## Exit status and JSON
 
 Successful commands and help return status `0`. Argument errors, configuration or
 dataset errors, and unimplemented commands return status `2`, with errors on
 stderr. A command's `--json` option emits JSON on stdout on success.
 
-A successful `doctor` means diagnostics completed. A successful CPU preprocessing
-run establishes a data artifact, not model quality or GPU support.
+Model quality is measured by evaluation on representative held-out data.

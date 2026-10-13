@@ -1,19 +1,48 @@
 # Train
 
-Training is planned and is not implemented in the current installed CLI.
-`rptu train` returns an explicit not-implemented error with exit status `2`.
+Train on a prepared dataset with an explicit split assignment and label mapping:
 
-The supported workflow currently prepares and validates data on the CPU. Start
-with the [quickstart](quickstart.md), and use the [dataset contract](dataset-contract.md)
-to supply labeled train and validation scenes.
+```sh
+rptu train --prepared runs/demo-prepared/prepared.json --output runs/model --backend warpconvnet --device cuda --epochs 20 --learning-rate 0.001 --seed 42
+```
 
-A fresh WarpConvNet model, training loop, checkpoint resume, and validation will
-be developed after establishing a supported GPU environment. No original trained
-weights or research datasets are included, so the new pipeline will establish its
-own baseline.
+For the portable CPU model, use `--backend torch --device cpu`. Leaving both
+options at `auto` chooses WarpConvNet when its CUDA runtime is available, otherwise
+the CPU fallback. Explicit requests fail with an actionable error when unavailable;
+an error during a GPU run does not silently start a different model.
 
-Earlier research documentation described PyTorch Lightning and MinkowskiEngine
-research scripts. Those scripts are incomplete and do not provide a supported
-training workflow. Their old function signatures are not the new CLI contract.
+## Training contract
 
-See [Model](model.md) and the [roadmap](todo.md) for the intended direction.
+- The training split supplies optimization samples and feature-normalization
+  statistics. Validation scenes never contribute to the normalization fit.
+- Training processes one scene at a time using Adam and masked cross-entropy.
+  Ignored voxel labels (`-1`) do not contribute to loss.
+- Feature order, units, voxel size, class mapping, and preprocessing choices are
+  recorded with the model. Evaluation rejects incompatible datasets.
+- `--epochs` defaults to `20`, `--learning-rate` to `0.001`, and `--seed` to `0`.
+- `--max-voxels` defaults to `100000` per scene. Larger inputs fail clearly instead
+  of losing points silently. This bound is not an automatic memory estimator.
+- Loss and gradients must remain finite. Model artifacts are written only after
+  successful training, and existing output directories are preserved.
+
+WarpConvNet uses MinkUNet18 with fixed BatchNorm running statistics and trainable
+affine parameters, allowing small sparse scenes. The CPU fallback is a two-hidden-
+layer voxel MLP. See the [model guide](model.md) for their different roles.
+
+## Model output
+
+The output directory contains `bundle.json`, `weights.safetensors`, and
+`training.json`. The report records each epoch's loss and point-level `train` and
+`val` metrics; `val` is `null` when no validation split is present.
+The bundle records the architecture, preprocessing contract, normalization,
+weight checksum, and runtime information. It is portable as a whole directory.
+Weights use the safetensors format; model loading does not deserialize Python
+objects.
+
+Use this directory with `evaluate --model` or `predict --model`. Checkpoint resume
+and optimizer-state recovery are follow-up work. Train a new run into a new output
+directory when changing settings.
+
+The [quickstart](quickstart.md) creates public synthetic inputs. Their purpose is
+to exercise the complete workflow; useful application models require representative
+training data and a separate evaluation split.

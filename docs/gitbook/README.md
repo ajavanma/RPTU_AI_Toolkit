@@ -1,33 +1,26 @@
 # RPTU AI Toolkit
 
-RPTU AI Toolkit provides a CPU workflow for generating synthetic point clouds,
-validating raw and prepared datasets, and preprocessing points into voxels. The project
-originated in LiDAR segmentation and BIM research and is being modernized for
-reusable public datasets and reproducible workflows.
+RPTU AI Toolkit is a GPU-first point-cloud segmentation toolkit for NVIDIA RTX 4070 systems, with a portable CPU fallback. It combines synthetic data generation, dataset validation, voxel preprocessing, training, evaluation, and prediction. The project originated in LiDAR segmentation and BIM research and provides reusable public dataset contracts and reproducible workflows.
 
-The current development version supports:
+WarpConvNet's MinkUNet18 provides spatial segmentation on NVIDIA GPUs. The
+PyTorch voxel MLP provides a lightweight CPU fallback and can also run on CUDA.
+Both use the same dataset contracts, CLI, original point mapping, and model-bundle
+format. Saved models retain their architecture; a WarpConvNet model requires
+CUDA, while a PyTorch model can move between CPU and CUDA.
 
-- An installable Python package and noninteractive `rptu` command.
-- Strict configuration and dataset validation, including SHA-256 file checksums.
-- Numeric NPZ scenes and an optional PLY reader.
-- Seeded synthetic scenes for checking data correctness.
-- CPU voxelization with preserved point IDs, original labels, and point-to-voxel mappings.
-- A portable prepared-dataset reader and CPU validation of complete prepared bundles.
+Start with the [GPU and CPU quickstart](quickstart.md), then read the
+[CLI reference](cli-reference.md), [dataset contract](dataset-contract.md), and
+[model guide](model.md). The [training guide](train.md) explains model selection;
+[test and evaluation](test.md) covers metrics and point-label exports.
 
-Training, evaluation, prediction, and benchmarking are not implemented in the new
-CLI yet. WarpConvNet is the planned sparse-convolution backend; the GPU runtime
-has not been validated. No original research datasets or trained model artifacts
-are included. The older research scripts are incomplete and are not a supported
-end-to-end workflow.
+The toolkit includes small seeded synthetic scenes so the complete workflow can
+run without an external dataset account. These scenes demonstrate behavior, not
+real-world segmentation quality. Train a fresh model on your own labeled data
+for an application; original research datasets and weights are not distributed.
 
-Start with the [CPU quickstart](quickstart.md), then read the
-[CLI reference](cli-reference.md) and [dataset contract](dataset-contract.md).
-Use the [configuration reference](configuration.md) for application YAML and the
-[development guide](development.md) for testing and package builds.
-
-The [roadmap](todo.md) distinguishes implemented features from planned work.
-The Train, Test, Utils, Preprocess, and Model pages explain the current status of
-the former research workflow.
+The [roadmap](todo.md) covers checkpoint resume, Helm Jobs, Fleet examples, and
+other follow-up work. The older research scripts are preserved as history; use
+`rptu` for the current workflow.
 
 Source: [ajavanma/RPTU_AI_Toolkit on GitHub](https://github.com/ajavanma/RPTU_AI_Toolkit).
 The project is MIT licensed.

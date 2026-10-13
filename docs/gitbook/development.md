@@ -31,8 +31,8 @@ tested after moving the bundle and removing its raw source directory. Import
 guards catch accidental ML dependency imports.
 
 The older tests directly under `tests/` reference incomplete research interfaces
-and external data. They are outside the supported suite; use the two discovery
-commands above instead of broad test collection.
+and external data. They are outside the supported suite; use the explicit discovery
+commands here instead of broad test collection.
 
 ## Locked development environment
 
@@ -44,8 +44,16 @@ uv run --locked --extra test --extra io python -m unittest discover -s tests/uni
 uv run --locked --extra test --extra io python -m unittest discover -s tests/cli -v
 ```
 
-The lockfile covers the CPU package and development environment. No validated GPU
-dependency profile is provided yet.
+The lockfile includes the optional ML dependencies. To exercise the CPU model:
+
+```sh
+uv sync --locked --extra test --extra io --extra ml
+uv run --locked --extra test --extra io --extra ml python -m unittest discover -s tests/ml -v
+```
+
+Alternatively install `.[ml]` with pip and run the same `tests/ml` discovery.
+The separate `requirements/gpu-cu128.txt` pins the WarpConvNet CUDA wheel and
+matching PyTorch build. Keep it separate from the portable CPU dependency set.
 
 ## Build and CI
 
@@ -60,9 +68,11 @@ environment outside the checkout. The clean wheel check installs core dependenci
 only, keeping PLY optional. Current run results are available in
 [GitHub Actions](https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml).
 
-Passing these CPU tests does not validate model training, inference, CUDA, or
-Kubernetes execution. GPU, container, and deployment checks belong to their
-respective future milestones.
+The CPU model suite runs real training, safetensors save/load, point-level
+metrics, and prediction. It exercises corruption and contract-mismatch failures,
+ignored and removed rows, deterministic behavior, and output preservation.
+A separate CI job builds the CPU container and runs the CLI through mounted
+storage. GPU kernels and cluster execution are separate execution environments.
 
 Report defects through [GitHub issues](https://github.com/ajavanma/RPTU_AI_Toolkit/issues),
 including the command, toolkit version, Python version, and a small reproducible
