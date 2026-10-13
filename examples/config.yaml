@@ -1,0 +1,8 @@
+# Paths are relative to this file. Validation does not create directories.
+schema_version: 1
+paths:
+  input_dir: ../data
+  output_dir: ../runs
+runtime:
+  seed: 0
+  num_workers: 0
