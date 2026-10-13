@@ -24,6 +24,11 @@ from the documentation content.
 The [source pages](gitbook/README.md) describe the GPU/CPU toolkit, prepared-data
 workflow, model bundles, resumable training, evaluation, and point-label prediction. Update
 existing pages in a reviewed GitBook change request and keep the stable page slugs.
+This public site continues to document RPTU's modern `main` baseline following
+the [project transition](project-lineage.md). The private PointCloud Workflows
+successor maintains its own documentation; successor implementation and private
+documentation are not published on this site. Keep the RPTU name, commands,
+existing URLs, and research-history references here.
 Record the completed source merge and public verification in the modernization
 plan. A prior publication issue left public pages stale after reader change
 request 3 was merged, despite the preview showing the new content; compare the

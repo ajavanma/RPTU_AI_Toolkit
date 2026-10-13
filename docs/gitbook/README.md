@@ -19,9 +19,22 @@ real-world segmentation quality. Train a fresh model on your own labeled data
 for an application; original research datasets and weights are not distributed.
 
 Training supports epoch checkpoints and `--resume`, with durable attempt records
-and verified completed retries. The [roadmap](todo.md) covers public-data recipes,
-Helm Jobs, Fleet examples, and other follow-up work. The older research scripts are preserved as history; use
-`rptu` for the current workflow.
+and verified completed retries. Use `rptu` for the current workflow.
+
+## Project lineage
+
+The public RPTU repository's default `main` branch retains this modern workflow.
+The [`research-legacy` branch](https://github.com/ajavanma/RPTU_AI_Toolkit/tree/research-legacy)
+preserves the research-era code before modernization. These pages continue to
+document the working RPTU package, commands, and containers on `main`.
+
+Future feature development continues in
+[PointCloud Workflows](https://github.com/ajavanma/PointCloud-Workflows), an
+independent **private** successor with the full Git history. Owner-granted access
+is required. The [roadmap](todo.md) records possible successor work; this public
+site continues to cover the RPTU baseline. See the
+[project lineage record](https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/docs/project-lineage.md)
+for branch and release details.
 
 Source: [ajavanma/RPTU_AI_Toolkit on GitHub](https://github.com/ajavanma/RPTU_AI_Toolkit).
 The project is MIT licensed.
