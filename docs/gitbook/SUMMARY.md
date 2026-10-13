@@ -1,7 +1,7 @@
 # Table of contents
 
 * [RPTU AI Toolkit](README.md)
-* [CPU quickstart](quickstart.md)
+* [GPU and CPU quickstart](quickstart.md)
 * [CLI reference](cli-reference.md)
 * [Dataset contract](dataset-contract.md)
 * [Configuration](configuration.md)

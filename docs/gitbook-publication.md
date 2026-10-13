@@ -19,14 +19,15 @@ from the documentation content.
 | Space ID | `ajFUWYe5yIaghJc56ivh` |
 | Public URL | <https://rptu.gitbook.io/rptu-ai-toolkit/> |
 | Publication mode | Manual Markdown snapshot; no Git Sync |
-| Documentation source baseline | Prepared-reader implementation at `a2b804c44a08053ca7039dc707cabf52bcc9a32f` |
+| Documentation source baseline | GPU/CPU model workflow; see this file's Git history for the source revision |
 
-The [source pages](gitbook/README.md) describe CPU packaging, raw dataset
-preparation, and prepared-artifact validation, including `rptu inspect --prepared`.
-Publish this snapshot only after its implementation passes CI and is merged.
-Future updates should follow the same gate; local test success alone does not
-establish the published capability. Record the completed merge and public
-verification in the modernization plan.
+The [source pages](gitbook/README.md) describe the GPU/CPU toolkit, prepared-data
+workflow, model bundles, training, evaluation, and point-label prediction. Update
+existing pages in a reviewed GitBook change request and keep the stable page slugs.
+Record the completed source merge and public verification in the modernization
+plan. A prior publication issue left public pages stale after reader change
+request 3 was merged, despite the preview showing the new content; compare the
+public output when publishing this update.
 
 The [original research site](https://arash.gitbook.io/rptu-ai-toolkit/) was not
 accessible for editing through the available account and remains unchanged. The
@@ -41,7 +42,7 @@ published page order, titles, and slugs are:
 | File | Page title | Public path after the site base |
 | --- | --- | --- |
 | `README.md` | RPTU AI Toolkit | Homepage `/` |
-| `quickstart.md` | CPU quickstart | `quickstart` |
+| `quickstart.md` | GPU and CPU quickstart | `quickstart` |
 | `cli-reference.md` | CLI reference | `cli-reference` |
 | `dataset-contract.md` | Dataset contract | `dataset-contract` |
 | `configuration.md` | Configuration | `configuration` |

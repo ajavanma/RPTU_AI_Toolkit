@@ -1,7 +1,7 @@
 # Configuration
 
 Application configuration uses YAML schema version `1`. It currently covers only
-paths and runtime defaults. Dataset commands take explicit CLI arguments and a
+paths and runtime defaults. Dataset and ML commands take explicit CLI arguments and a
 separate JSON [dataset manifest](dataset-contract.md); they do not read this YAML.
 
 The repository's `examples/config.yaml` contains:
@@ -43,7 +43,8 @@ or create them.
   YAML merge overrides that duplicate a field are also rejected.
 
 Configuration validation does not initialize a model or check GPU availability.
-Model settings will be defined alongside the model implementation.
+Model settings use `train` CLI arguments and are recorded in the saved model bundle;
+see the [training guide](train.md).
 
 ## Historical configuration
 
