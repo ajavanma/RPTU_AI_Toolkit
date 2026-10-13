@@ -156,9 +156,10 @@ writes the completion metadata last. Failed commands remove the output they
 created. This is a local single-command contract; durable distributed run
 coordination is a later milestone.
 
-Prepared metadata is a distinct schema, not a raw dataset manifest. `inspect`
-accepts the raw manifest described above. A loader for training from prepared
-metadata will be added with the model pipeline.
+Prepared metadata is a distinct schema, not a raw dataset manifest. Use
+`rptu inspect --manifest PATH` for raw data or `rptu inspect --prepared PATH` for
+prepared metadata. The options are mutually exclusive. Both commands validate
+every listed scene before printing a successful report.
 
 `prepared.json` has `schema_version: 1`, `kind: "rptu-prepared-dataset"`, and:
 
@@ -193,3 +194,39 @@ are absent for an unlabeled prediction scene.
 The seeded synthetic generator produces identical array and manifest bytes for
 the same implementation, seed, and dependency versions. This is not a guarantee
 across changes to the generator, NumPy, or the serialization implementation.
+
+## Reading and validating prepared data
+
+```sh
+rptu inspect --prepared runs/demo-prepared/prepared.json --json
+```
+
+The report identifies `kind: "rptu-prepared-dataset"` and includes per-scene and
+total input, retained, removed, and voxel counts. Point and voxel label count maps
+use training IDs, including `-1`; point counts include removed rows. Raw inspection
+uses `kind: "rptu-raw-dataset"` and its label counts use original dataset IDs.
+
+The Python API is independent of any ML engine:
+
+```python
+from rptu_ai_toolkit.prepared import load_prepared_manifest, load_prepared_scene
+
+dataset = load_prepared_manifest("runs/demo-prepared/prepared.json")
+for scene in dataset.scenes:
+    sample = load_prepared_scene(dataset, scene)
+    retained = sample.point_to_voxel >= 0
+    original_ids = sample.point_indices[retained]
+```
+
+Manifest loading validates the schema, reductions, class mapping, scene identities,
+counts, and contained relative paths. Scene loading additionally verifies the file
+checksum, exact signed int64/float64 dtypes (either byte order), shapes, finite
+features, sorted unique voxel coordinates, unique point IDs, and mapping bounds.
+Every voxel must be referenced and counts must agree. Labeled scenes require both
+label arrays; labels must lie in the declared training range, and voxel labels
+must match the documented majority/tie rule applied to retained point labels.
+
+The prepared directory can be moved as one bundle. Validation does not reopen
+raw files. Source hashes are recorded provenance, not proof of publisher identity
+or of the transformation against absent raw data. In particular, the reader
+cannot recompute voxel coordinates or mean features without the source arrays.

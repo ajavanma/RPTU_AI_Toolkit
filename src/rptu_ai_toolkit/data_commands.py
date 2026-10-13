@@ -16,6 +16,13 @@ def _label_mapping(manifest):
     ]
 
 
+def _label_counts(labels: np.ndarray | None) -> dict[str, int] | None:
+    if labels is None:
+        return None
+    values, numbers = np.unique(labels, return_counts=True)
+    return {str(int(value)): int(count) for value, count in zip(values, numbers)}
+
+
 def inspect_dataset(path: str | Path) -> dict:
     """Validate every scene and report raw point counts without modifying data."""
     manifest = load_manifest(path)
@@ -23,10 +30,6 @@ def inspect_dataset(path: str | Path) -> dict:
     for scene in manifest.scenes:
         sample = load_scene(manifest, scene)
         finite = np.isfinite(sample.coords).all(axis=1) & np.isfinite(sample.features).all(axis=1)
-        counts = None
-        if sample.labels is not None:
-            values, numbers = np.unique(sample.labels, return_counts=True)
-            counts = {str(int(value)): int(count) for value, count in zip(values, numbers)}
         scenes.append({
             "id": scene.id,
             "split": scene.split,
@@ -34,11 +37,12 @@ def inspect_dataset(path: str | Path) -> dict:
             "valid_points": int(finite.sum()),
             "invalid_points": int((~finite).sum()),
             "labeled": sample.labels is not None,
-            "label_counts": counts,
+            "label_counts": _label_counts(sample.labels),
             "sha256": scene.sha256,
         })
     return {
         "schema_version": 1,
+        "kind": "rptu-raw-dataset",
         "coordinate_unit": manifest.coordinate_unit,
         "feature_names": list(manifest.feature_names),
         "label_mapping": _label_mapping(manifest),
@@ -46,6 +50,45 @@ def inspect_dataset(path: str | Path) -> dict:
         "scenes": scenes,
         "total_points": sum(scene["points"] for scene in scenes),
         "total_invalid_points": sum(scene["invalid_points"] for scene in scenes),
+    }
+
+
+def inspect_prepared_dataset(path: str | Path) -> dict:
+    """Validate a complete prepared bundle without reopening the raw dataset."""
+    from .prepared import load_prepared_manifest, load_prepared_scene
+
+    dataset = load_prepared_manifest(path)
+    scenes = []
+    for scene in dataset.scenes:
+        sample = load_prepared_scene(dataset, scene)
+        valid_points = int((sample.point_to_voxel >= 0).sum())
+        scenes.append({
+            "id": scene.id,
+            "split": scene.split,
+            "input_points": len(sample.point_to_voxel),
+            "valid_points": valid_points,
+            "invalid_points": len(sample.point_to_voxel) - valid_points,
+            "voxel_count": len(sample.voxel_coords),
+            "labeled": sample.labels is not None,
+            "point_label_counts": _label_counts(sample.point_labels),
+            "voxel_label_counts": _label_counts(sample.labels),
+            "sha256": scene.sha256,
+        })
+    return {
+        "schema_version": 1,
+        "kind": "rptu-prepared-dataset",
+        "coordinate_unit": dataset.coordinate_unit,
+        "feature_names": list(dataset.feature_names),
+        "label_mapping": _label_mapping(dataset),
+        "ignore_label": dataset.ignore_label,
+        "training_ignore_label": -1,
+        "voxel_size": dataset.voxel_size,
+        "source_manifest_sha256": dataset.source_manifest_sha256,
+        "scenes": scenes,
+        "total_input_points": sum(scene["input_points"] for scene in scenes),
+        "total_valid_points": sum(scene["valid_points"] for scene in scenes),
+        "total_invalid_points": sum(scene["invalid_points"] for scene in scenes),
+        "total_voxels": sum(scene["voxel_count"] for scene in scenes),
     }
 
 
