@@ -61,6 +61,29 @@ class TestInstalledModelCLI(unittest.TestCase):
         self.assertEqual(bundle["weights"]["sha256"], sha256_file(model / "weights.safetensors"))
         self.assertEqual(json.loads((model / "training.json").read_text()), training)
 
+        # A completed retry restores omitted settings and returns the saved
+        # report without retraining, creating another attempt, or rewriting files.
+        before_retry = {
+            path.relative_to(model).as_posix(): sha256_file(path)
+            for path in model.rglob("*") if path.is_file()
+        }
+        retried = self.json_command(
+            "train", "--prepared", "prepared/prepared.json", "--output", "model", "--resume",
+        )
+        self.assertEqual(retried, training)
+        for arguments, message in (((), "output already exists"), (("--resume", "--epochs", "3"), "epochs")):
+            failure = self.run_command(
+                "train", "--prepared", "prepared/prepared.json", "--output", "model", *arguments,
+            )
+            self.assertEqual(failure.returncode, 2, failure.stderr)
+            self.assertIn(message, failure.stderr)
+            self.assertNotIn("Traceback", failure.stderr)
+        after_retry = {
+            path.relative_to(model).as_posix(): sha256_file(path)
+            for path in model.rglob("*") if path.is_file()
+        }
+        self.assertEqual(after_retry, before_retry)
+
         evaluation = self.json_command(
             "evaluate", "--prepared", "prepared/prepared.json", "--model", "model",
             "--output", "evaluation", "--device", "cpu",

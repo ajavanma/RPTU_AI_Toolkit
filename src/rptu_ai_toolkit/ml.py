@@ -12,6 +12,8 @@ import math
 import os
 from pathlib import Path
 import re
+import shutil
+import uuid
 
 import numpy as np
 
@@ -20,6 +22,8 @@ from .artifacts import new_output_directory, write_json, write_npz
 from .datasets import _fields, _float, _nonfinite, _object, sha256_file
 from .models import MLRuntimeError, build_model, resolve_runtime
 from .prepared import load_prepared_manifest, load_prepared_scene
+from .checkpoints import load_checkpoint, save_checkpoint
+from .runs import TrainingRun, read_completion, read_run_spec
 
 
 _ARCHITECTURES = {"torch": "feature-mlp-64-64-v1", "warpconvnet": "minkunet18-v1"}
@@ -217,10 +221,73 @@ def _infer(scenes, dataset, model, normalization, device, torch, *, on_predictio
     return _metrics(confusion, dataset, total, valid, scored)
 
 
-def train_model(prepared, output, *, device="auto", backend="auto", epochs=20,
-                learning_rate=0.001, seed=0, max_voxels=100000) -> dict:
-    """Train on the train split and write a new model bundle and epoch report."""
-    _check_output(output)
+def _read_training_report(path, dataset, history, backend, device, has_validation):
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=_object,
+                            parse_constant=_nonfinite, parse_float=_float)
+        _fields(report, {"schema_version", "kind", "backend", "device", "architecture", "epochs", "train", "val"}, "training report")
+        for key, expected in {
+            "schema_version": 1, "kind": "rptu-training-report", "backend": backend,
+            "device": device, "architecture": _ARCHITECTURES[backend], "epochs": history,
+        }.items():
+            if json.dumps(report[key], sort_keys=True) != json.dumps(expected, sort_keys=True):
+                raise MLRuntimeError(f"completed training report {key}: does not match its run/checkpoint")
+        for split in ("train", "val"):
+            metrics = report[split]
+            if split == "val" and not has_validation:
+                if metrics is not None:
+                    raise MLRuntimeError("training report val: expected null without a validation split")
+                continue
+            _fields(metrics, {"total_points", "valid_points", "scored_points", "excluded_points", "confusion_matrix",
+                              "confusion_axes", "classes", "accuracy", "mean_iou"}, "training report metrics")
+            counts = [metrics[key] for key in ("total_points", "valid_points", "scored_points")]
+            if any(type(count) is not int or not 0 <= count <= 2**63 - 1 for count in counts):
+                raise MLRuntimeError("training report metrics: expected nonnegative integer point counts")
+            total, valid, scored = counts
+            if not scored <= valid <= total:
+                raise MLRuntimeError("training report metrics: inconsistent point counts")
+            confusion = metrics["confusion_matrix"]
+            classes = len(dataset.classes)
+            if (not isinstance(confusion, list) or len(confusion) != classes
+                    or any(not isinstance(row, list) or len(row) != classes for row in confusion)
+                    or any(type(value) is not int or not 0 <= value <= 2**63 - 1 for row in confusion for value in row)
+                    or sum(sum(row) for row in confusion) != scored):
+                raise MLRuntimeError("training report confusion_matrix: invalid dimensions or counts")
+            expected = _metrics(np.asarray(confusion, dtype=np.int64), dataset, total, valid, scored)
+            if json.dumps(metrics, sort_keys=True) != json.dumps(expected, sort_keys=True):
+                raise MLRuntimeError("training report metrics: inconsistent scores/class mapping")
+        return report
+    except (OSError, ValueError, TypeError, KeyError, RecursionError) as error:
+        if isinstance(error, MLRuntimeError):
+            raise
+        raise MLRuntimeError(f"cannot load completed training report: {error}") from error
+
+
+def train_model(prepared, output, *, device="auto", backend="auto", epochs=None,
+                learning_rate=None, seed=None, max_voxels=None, resume=False) -> dict:
+    """Train or resume the same immutable run, retaining completed epoch state."""
+    if type(resume) is not bool:
+        raise MLRuntimeError("resume: expected a boolean")
+    saved = read_run_spec(output) if resume else None
+    if not resume:
+        _check_output(output)
+    defaults = {"epochs": 20, "learning_rate": 0.001, "seed": 0, "max_voxels": 100000}
+    supplied = {"epochs": epochs, "learning_rate": learning_rate, "seed": seed, "max_voxels": max_voxels}
+    try:
+        settings = {key: value if value is not None else (saved["training"][key] if saved is not None else defaults[key])
+                    for key, value in supplied.items()}
+        if saved is not None:
+            if backend == "auto":
+                backend = saved["backend"]
+            if device == "auto":
+                device = saved["runtime"]["device"]
+    except (KeyError, TypeError) as error:
+        raise MLRuntimeError("run specification: missing training settings/runtime") from error
+    if not isinstance(backend, str) or backend not in ("auto", "torch", "warpconvnet"):
+        raise MLRuntimeError("run backend: expected auto, torch or warpconvnet")
+    if not isinstance(device, str) or device not in ("auto", "cpu", "cuda"):
+        raise MLRuntimeError("run device: expected auto, cpu or cuda")
+    epochs, learning_rate, seed, max_voxels = (settings[key] for key in defaults)
     _positive_integer(epochs, "epochs")
     _positive_integer(max_voxels, "max_voxels")
     if type(seed) is not int or not 0 <= seed <= 2**32 - 1:
@@ -232,72 +299,117 @@ def train_model(prepared, output, *, device="auto", backend="auto", epochs=20,
     if not any(np.any(sample.labels >= 0) for _, sample in training):
         raise MLRuntimeError("train split has no nonignored training labels")
     normalization = _normalization(training)
-    # Check float32 conversions on all used scenes before reserving output.
+    # Validate source hashes and all used float32 conversions before any writes.
     for _, sample in chain(training, validation):
         _normalized_features(sample, normalization)
-    torch, _, save_file = _dependencies()
+    torch, load_file, save_file = _dependencies()
     device, backend = resolve_runtime(device=device, backend=backend)
+    spec = {
+        "schema_version": 1, "kind": "rptu-training-specification", "backend": backend,
+        "architecture": _ARCHITECTURES[backend], "input_channels": len(dataset.feature_names),
+        "num_classes": len(dataset.classes), "contract": _contract(dataset), "normalization": normalization,
+        "training": {
+            "seed": seed, "epochs": epochs, "learning_rate": float(learning_rate),
+            "max_voxels": max_voxels, "prepared_sha256": sha256_file(dataset.source),
+            "train_scene_ids": [scene.id for scene in training.scenes],
+        },
+        "optimizer": "Adam", "runtime": _runtime(device, backend, torch),
+        "optimizer_steps_per_epoch": sum(bool(np.any(sample.labels >= 0)) for _, sample in training),
+        "torch_threads": torch.get_num_threads(),
+    }
+    # Compare before acquiring a run or appending attempt metadata. The locked
+    # comparison below also protects against a run.json change during validation.
+    if saved is not None and json.dumps(saved, sort_keys=True) != json.dumps(spec, sort_keys=True):
+        def differences(before, after, prefix=""):
+            if isinstance(before, dict) and isinstance(after, dict):
+                result = []
+                for key in sorted(before.keys() | after.keys()):
+                    field = f"{prefix}.{key}" if prefix else key
+                    if key not in before or key not in after:
+                        result.append(field)
+                    else:
+                        result.extend(differences(before[key], after[key], field))
+                return result
+            return [] if json.dumps(before, sort_keys=True) == json.dumps(after, sort_keys=True) else [prefix]
+        changed = ", ".join(differences(saved, spec))
+        raise MLRuntimeError(f"resume specification differs from the original run: {changed}")
     rng_devices = [torch.cuda.current_device()] if device == "cuda" else []
     try:
         with torch.random.fork_rng(devices=rng_devices):
-            torch.manual_seed(seed)
+            # Seed only RNGs covered by fork_rng; don't alter unrelated GPUs.
+            torch.random.default_generator.manual_seed(seed)
+            if device == "cuda":
+                torch.cuda.manual_seed(seed)
             model = build_model(backend, len(dataset.feature_names), len(dataset.classes), device)
             optimizer = torch.optim.Adam(model.parameters(), lr=float(learning_rate))
-            history = []
-            for epoch in range(epochs):
-                model.train()
-                total_loss, total_labels = 0.0, 0
-                for _, sample in training:
-                    supervised = int((sample.labels >= 0).sum())
-                    if not supervised:
-                        continue
-                    optimizer.zero_grad(set_to_none=True)
-                    logits = _logits(model, sample, normalization, device, len(dataset.classes), torch)
-                    labels = torch.from_numpy(np.ascontiguousarray(sample.labels)).to(device=device, dtype=torch.int64)
-                    loss = torch.nn.functional.cross_entropy(logits, labels, ignore_index=-1)
-                    if not torch.isfinite(loss).item():
-                        raise MLRuntimeError("training produced a nonfinite loss")
-                    loss.backward()
-                    if any(parameter.grad is not None and not torch.isfinite(parameter.grad).all().item() for parameter in model.parameters()):
-                        raise MLRuntimeError("training produced nonfinite gradients; lower the learning rate")
-                    optimizer.step()
-                    total_loss += float(loss.detach().cpu()) * supervised
-                    total_labels += supervised
-                history.append({"epoch": epoch + 1, "loss": total_loss / total_labels})
-            training_metrics = _infer(training, dataset, model, normalization, device, torch)
-            validation_metrics = _infer(validation, dataset, model, normalization, device, torch)
-            state = {name: value.detach().cpu().contiguous() for name, value in model.state_dict().items()}
-            if any(value.is_floating_point() and not torch.isfinite(value).all().item() for value in state.values()):
-                raise MLRuntimeError("training produced nonfinite model weights")
-            bundle = {
-                "schema_version": 1,
-                "kind": "rptu-segmentation-model",
-                "backend": backend,
-                "architecture": _ARCHITECTURES[backend],
-                "input_channels": len(dataset.feature_names),
-                "num_classes": len(dataset.classes),
-                "contract": _contract(dataset),
-                "normalization": normalization,
-                "training": {
-                    "seed": seed, "epochs": epochs, "learning_rate": float(learning_rate),
-                    "max_voxels": max_voxels, "prepared_sha256": sha256_file(dataset.source),
-                    "train_scene_ids": [scene.id for scene in training.scenes],
-                },
-                "runtime": _runtime(device, backend, torch),
-            }
-            report = {
-                "schema_version": 1, "kind": "rptu-training-report", "backend": backend,
-                "device": device, "architecture": _ARCHITECTURES[backend],
-                "epochs": history, "train": training_metrics,
-                "val": validation_metrics if validation else None,
-            }
-            with new_output_directory(output) as directory:
-                weights = directory / "weights.safetensors"
-                save_file(state, str(weights))
-                bundle["weights"] = {"path": "weights.safetensors", "sha256": sha256_file(weights)}
-                write_json(directory / "training.json", report)
-                write_json(directory / "bundle.json", bundle)
+            with TrainingRun(output, resume=resume) as run:
+                run.bind_spec(spec)
+                history = load_checkpoint(run, model, optimizer, torch, load_file, device, epochs)
+                completion = run.completed()
+                if completion is not None:
+                    if history is None or len(history) != epochs:
+                        raise MLRuntimeError("completed run must reference its final epoch checkpoint")
+                    # Inference validation checks the final model's numeric state.
+                    _load_model(run.path, dataset, device)
+                    if json.dumps(completion["summary"], sort_keys=True) != json.dumps({"epochs": epochs}, sort_keys=True):
+                        raise MLRuntimeError("completed run summary does not match its epoch target")
+                    return _read_training_report(run.path / "training.json", dataset, history, backend, device, bool(validation))
+                with run.attempt():
+                    if history is None:
+                        history = []
+                        save_checkpoint(run, model, optimizer, history, torch, save_file, device)
+                    for epoch in range(len(history), epochs):
+                        model.train()
+                        total_loss, total_labels = 0.0, 0
+                        for _, sample in training:
+                            supervised = int((sample.labels >= 0).sum())
+                            if not supervised:
+                                continue
+                            optimizer.zero_grad(set_to_none=True)
+                            logits = _logits(model, sample, normalization, device, len(dataset.classes), torch)
+                            labels = torch.from_numpy(np.ascontiguousarray(sample.labels)).to(device=device, dtype=torch.int64)
+                            loss = torch.nn.functional.cross_entropy(logits, labels, ignore_index=-1)
+                            if not torch.isfinite(loss).item():
+                                raise MLRuntimeError("training produced a nonfinite loss")
+                            loss.backward()
+                            if any(parameter.grad is not None and not torch.isfinite(parameter.grad).all().item() for parameter in model.parameters()):
+                                raise MLRuntimeError("training produced nonfinite gradients; lower the learning rate")
+                            optimizer.step()
+                            total_loss += float(loss.detach().cpu()) * supervised
+                            total_labels += supervised
+                        history.append({"epoch": epoch + 1, "loss": total_loss / total_labels})
+                        save_checkpoint(run, model, optimizer, history, torch, save_file, device)
+                    training_metrics = _infer(training, dataset, model, normalization, device, torch)
+                    validation_metrics = _infer(validation, dataset, model, normalization, device, torch)
+                    state = {name: value.detach().cpu().contiguous() for name, value in model.state_dict().items()}
+                    if any(value.is_floating_point() and not torch.isfinite(value).all().item() for value in state.values()):
+                        raise MLRuntimeError("training produced nonfinite model weights")
+                    bundle = {
+                        "schema_version": 1, "kind": "rptu-segmentation-model", "backend": backend,
+                        "architecture": _ARCHITECTURES[backend], "input_channels": len(dataset.feature_names),
+                        "num_classes": len(dataset.classes), "contract": _contract(dataset),
+                        "normalization": normalization, "training": spec["training"], "runtime": spec["runtime"],
+                    }
+                    report = {
+                        "schema_version": 1, "kind": "rptu-training-report", "backend": backend,
+                        "device": device, "architecture": _ARCHITECTURES[backend],
+                        "epochs": history, "train": training_metrics,
+                        "val": validation_metrics if validation else None,
+                    }
+                    staging = run.path / f".publish-{uuid.uuid4().hex}"
+                    staging.mkdir()
+                    try:
+                        weights = staging / "weights.safetensors"
+                        save_file(state, str(weights))
+                        bundle["weights"] = {"path": "weights.safetensors", "sha256": sha256_file(weights)}
+                        write_json(staging / "training.json", report)
+                        write_json(staging / "bundle.json", bundle)
+                        run.publish(staging, {"epochs": epochs})
+                    finally:
+                        shutil.rmtree(staging)
     except RuntimeError as error:
+        if isinstance(error, MLRuntimeError):
+            raise
         raise MLRuntimeError(f"training failed: {error}") from error
     return report
 
@@ -324,6 +436,8 @@ def _checksum(value, location):
 def _read_bundle(path, dataset):
     try:
         directory = Path(path).expanduser().resolve()
+        if os.path.lexists(directory / "run.json") and read_completion(directory) is None:
+            raise MLRuntimeError("training run is incomplete; resume training before loading its model")
         source = directory / "bundle.json"
         if not source.resolve().is_relative_to(directory):
             raise MLRuntimeError("bundle.json must remain inside the model directory")

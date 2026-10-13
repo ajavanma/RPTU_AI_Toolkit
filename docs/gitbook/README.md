@@ -18,8 +18,9 @@ run without an external dataset account. These scenes demonstrate behavior, not
 real-world segmentation quality. Train a fresh model on your own labeled data
 for an application; original research datasets and weights are not distributed.
 
-The [roadmap](todo.md) covers checkpoint resume, Helm Jobs, Fleet examples, and
-other follow-up work. The older research scripts are preserved as history; use
+Training supports epoch checkpoints and `--resume`, with durable attempt records
+and verified completed retries. The [roadmap](todo.md) covers public-data recipes,
+Helm Jobs, Fleet examples, and other follow-up work. The older research scripts are preserved as history; use
 `rptu` for the current workflow.
 
 Source: [ajavanma/RPTU_AI_Toolkit on GitHub](https://github.com/ajavanma/RPTU_AI_Toolkit).

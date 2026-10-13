@@ -78,6 +78,12 @@ run_rptu "$smoke_root/prepared" "$smoke_root/results" predict \
     --output /output/predictions --device cpu --split predict
 verify_artifacts > "$smoke_root/before.json"
 
+# Completed retries use the saved settings and leave every artifact unchanged.
+run_rptu "$smoke_root/prepared" "$smoke_root/models" train \
+    --prepared /input/scenes/prepared.json --output /output/baseline --resume --json
+verify_artifacts > "$smoke_root/resumed.json"
+cmp "$smoke_root/before.json" "$smoke_root/resumed.json"
+
 # A repeat must reject an existing output, preserving the prior artifacts.
 if run_rptu "$smoke_root/prepared" "$smoke_root/models" train \
     --prepared /input/scenes/prepared.json --output /output/baseline \

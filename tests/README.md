@@ -48,3 +48,9 @@ metrics and predictions, runtime selection, failure paths, and artifact integrit
 Core tests remain separate and do not require ML dependencies. CI also builds a
 CPU container and runs the mounted-input/output workflow using
 `scripts/container-smoke.sh`. GPU execution is a separate hardware check.
+
+Checkpoint tests compare interrupted-and-resumed CPU training with an uninterrupted
+run, including weights and loss history. They exercise optimizer and random-state
+recovery, incompatible settings, corruption, and completed retries. Run-output
+tests cover process contention, lock release after process death, interrupted
+publication, and preservation of completed artifacts.

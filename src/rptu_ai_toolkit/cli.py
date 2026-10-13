@@ -176,13 +176,16 @@ def _parser() -> argparse.ArgumentParser:
     ):
         command = commands.add_parser(name, help=summary, allow_abbrev=False)
         command.add_argument("--prepared", required=True, metavar="PATH", help="prepared.json metadata")
-        command.add_argument("--output", required=True, metavar="DIR", help="new output directory")
+        command.add_argument(
+            "--output", required=True, metavar="DIR",
+            help="training run directory (new unless --resume)" if name == "train" else "new output directory",
+        )
         command.add_argument(
             "--device", choices=("auto", "cpu", "cuda"), default="auto",
             help="execution device (default: auto)",
         )
         command.add_argument(
-            "--max-voxels", type=int, default=100000,
+            "--max-voxels", type=int, default=None if name == "train" else 100000,
             help="maximum voxels per scene; larger scenes fail without truncation (default: 100000)",
         )
         command.add_argument("--json", action="store_true", help="print the run report as JSON")
@@ -191,9 +194,13 @@ def _parser() -> argparse.ArgumentParser:
                 "--backend", choices=("auto", "torch", "warpconvnet"), default="auto",
                 help="WarpConvNet MinkUNet18 or portable PyTorch voxel MLP (default: auto)",
             )
-            command.add_argument("--epochs", type=int, default=20)
-            command.add_argument("--learning-rate", type=float, default=0.001)
-            command.add_argument("--seed", type=int, default=0)
+            command.add_argument("--epochs", type=int, help="total epochs for a new run (default: 20)")
+            command.add_argument("--learning-rate", type=float, help="Adam learning rate (default: 0.001)")
+            command.add_argument("--seed", type=int, help="initial random seed (default: 0)")
+            command.add_argument(
+                "--resume", action="store_true",
+                help="resume the run in --output using saved settings and the latest complete epoch",
+            )
         else:
             command.add_argument("--model", required=True, metavar="DIR", help="saved model bundle")
             command.add_argument(
@@ -223,7 +230,7 @@ def _ml_command(args: argparse.Namespace) -> int:
         if args.command == "train":
             report = train_model(
                 args.prepared, args.output, backend=args.backend, epochs=args.epochs,
-                learning_rate=args.learning_rate, seed=args.seed, **common,
+                learning_rate=args.learning_rate, seed=args.seed, resume=args.resume, **common,
             )
         else:
             operation = evaluate_model if args.command == "evaluate" else predict_model

@@ -83,6 +83,9 @@ class TestModelWorkflow(unittest.TestCase):
         import shutil
         destination = self.directory / "model"
         shutil.copytree(self.model, destination)
+        # These mutation tests exercise the standalone inference-bundle contract;
+        # completed training-run integrity is covered by test_checkpoints.
+        (destination / "run.json").unlink()
         return destination
 
     def write_bundle(self, model, bundle):
@@ -93,7 +96,7 @@ class TestModelWorkflow(unittest.TestCase):
         self.assertLess(losses[-1], losses[0] * 0.1)
         self.assertEqual(self.training_report["device"], "cpu")
         self.assertEqual(self.training_report["backend"], "torch")
-        self.assertEqual({path.name for path in self.model.iterdir()}, {"bundle.json", "weights.safetensors", "training.json"})
+        self.assertTrue({"bundle.json", "weights.safetensors", "training.json", "run.json", "latest.json", "complete.json", "attempts", "checkpoints"}.issubset({path.name for path in self.model.iterdir()}))
         bundle = json.loads((self.model / "bundle.json").read_text())
         self.assertEqual(bundle["weights"]["sha256"], sha256_file(self.model / "weights.safetensors"))
         np.testing.assert_allclose(bundle["normalization"]["mean"], self.arrays["features"].mean(axis=0))
