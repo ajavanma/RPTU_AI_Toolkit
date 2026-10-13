@@ -5,16 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rptu-ai-toolkit"
 dynamic = ["version"]
-description = "Configuration and CLI foundation for reproducible point-cloud segmentation"
+description = "CPU data preparation for reproducible point-cloud segmentation"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{name = "Arash Javanmardi"}]
-dependencies = ["PyYAML>=6.0.1,<7"]
+dependencies = ["PyYAML>=6.0.1,<7", "numpy>=1.26,<3"]
 
 [project.optional-dependencies]
 test = ["tqdm==4.66.1"]
+io = ["plyfile>=1.1,<2"]
 
 [project.scripts]
 rptu = "rptu_ai_toolkit.cli:main"

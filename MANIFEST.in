@@ -1,6 +1,7 @@
 include examples/config.yaml
 include requirements-test.txt uv.lock
 include tests/README.md
+recursive-include docs *.md
 recursive-include tests/unit *.py
 recursive-include tests/cli *.py
 exclude tests/test*.py

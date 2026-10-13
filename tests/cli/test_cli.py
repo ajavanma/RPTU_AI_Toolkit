@@ -12,8 +12,6 @@ import unittest
 
 
 FUTURE_COMMANDS = (
-    "inspect",
-    "preprocess",
     "train",
     "evaluate",
     "predict",
@@ -112,6 +110,7 @@ class InstalledCliTests(unittest.TestCase):
             report["capabilities"],
             {
                 "config_validation": True,
+                "dataset_preparation": True,
                 "ml_pipeline": False,
                 "gpu_runtime": "not_checked",
             },
