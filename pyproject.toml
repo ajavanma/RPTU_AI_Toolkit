@@ -16,7 +16,7 @@ dependencies = ["PyYAML>=6.0.1,<7", "numpy>=1.26,<3"]
 [project.optional-dependencies]
 test = ["tqdm==4.66.1"]
 io = ["plyfile>=1.1,<2"]
-ml = ["torch==2.10.0", "safetensors==0.7.0"]
+ml = ["torch==2.10.0", "safetensors[torch]==0.7.0"]
 
 [project.scripts]
 rptu = "rptu_ai_toolkit.cli:main"
