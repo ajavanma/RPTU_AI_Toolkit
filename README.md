@@ -195,7 +195,7 @@ python -m build
 The new pipeline will establish its own data and model baselines. BIM export and
 multi-GPU training are future work. The [current documentation](https://rptu.gitbook.io/rptu-ai-toolkit/)
 covers the merged CPU package and dataset workflow. It is a manually published
-snapshot. The
+snapshot; see [publication details](docs/gitbook-publication.md). The
 [original research documentation](https://arash.gitbook.io/rptu-ai-toolkit/) remains
 historical and does not describe the current package installation or CLI.
 
