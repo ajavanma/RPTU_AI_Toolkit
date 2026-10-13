@@ -96,7 +96,7 @@ capacity from the spatial MinkUNet18 model.
 Training writes a model bundle with safetensors weights, feature normalization,
 class mapping, and checksums. Evaluation reports original-point metrics;
 prediction exports original class IDs, point IDs, row positions, and validity
-masks. Every output path must be new. The default bound is 100,000 voxels per
+masks. New runs require a fresh output path. The default bound is 100,000 voxels per
 scene; `--max-voxels` changes it without silently truncating inputs.
 
 Training saves an initial checkpoint and one after every completed epoch. If a
