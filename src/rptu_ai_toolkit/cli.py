@@ -1,4 +1,4 @@
-"""Noninteractive commands that do not initialize an ML runtime."""
+"""Noninteractive commands with optional ML imports at execution boundaries."""
 
 import argparse
 from importlib import metadata
@@ -10,7 +10,7 @@ from collections.abc import Sequence
 from . import __version__
 
 
-PLANNED_COMMANDS = ("train", "evaluate", "predict", "benchmark")
+PLANNED_COMMANDS = ("benchmark",)
 
 
 def _package_version(name: str) -> str | None:
@@ -27,13 +27,14 @@ def _doctor(as_json: bool) -> int:
         "python": platform.python_version(),
         "platform": platform.platform(),
         "packages": {
-            name: _package_version(name) for name in ("PyYAML", "numpy", "plyfile", "torch", "warpconvnet")
+            name: _package_version(name)
+            for name in ("PyYAML", "numpy", "plyfile", "torch", "safetensors", "warpconvnet")
         },
         "capabilities": {
             "config_validation": True,
             "dataset_preparation": True,
             "prepared_dataset_validation": True,
-            "ml_pipeline": False,
+            "ml_pipeline": True,
             "gpu_runtime": "not_checked",
         },
     }
@@ -48,8 +49,9 @@ def _doctor(as_json: bool) -> int:
         print("Configuration validation: available")
         print("CPU dataset preparation: available (PLY requires the io extra)")
         print("Prepared dataset validation: available")
-        print("ML pipeline: not implemented")
-        print("GPU runtime: not checked (package presence does not validate CUDA)")
+        print("Training, evaluation and prediction: available with the ml extra")
+        print("Backends: WarpConvNet (CUDA), PyTorch (CPU or CUDA)")
+        print("Device selection runs when an ML command starts.")
     return 0
 
 
@@ -120,8 +122,7 @@ def _data_command(args: argparse.Namespace) -> int:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="rptu",
-        description="RPTU AI Toolkit: CPU dataset validation and preparation.",
-        epilog="ML pipeline commands are planned and are not implemented in this version.",
+        description="RPTU AI Toolkit: GPU point-cloud segmentation with a CPU fallback.",
         allow_abbrev=False,
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -168,6 +169,39 @@ def _parser() -> argparse.ArgumentParser:
     )
     preprocess.add_argument("--json", action="store_true", help="print the prepared dataset metadata")
 
+    for name, summary in (
+        ("train", "train a segmentation model from prepared scenes"),
+        ("evaluate", "evaluate a saved model at original point resolution"),
+        ("predict", "export predicted dataset class IDs in original point order"),
+    ):
+        command = commands.add_parser(name, help=summary, allow_abbrev=False)
+        command.add_argument("--prepared", required=True, metavar="PATH", help="prepared.json metadata")
+        command.add_argument("--output", required=True, metavar="DIR", help="new output directory")
+        command.add_argument(
+            "--device", choices=("auto", "cpu", "cuda"), default="auto",
+            help="execution device (default: auto)",
+        )
+        command.add_argument(
+            "--max-voxels", type=int, default=100000,
+            help="maximum voxels per scene; larger scenes fail without truncation (default: 100000)",
+        )
+        command.add_argument("--json", action="store_true", help="print the run report as JSON")
+        if name == "train":
+            command.add_argument(
+                "--backend", choices=("auto", "torch", "warpconvnet"), default="auto",
+                help="WarpConvNet MinkUNet18 or portable PyTorch voxel MLP (default: auto)",
+            )
+            command.add_argument("--epochs", type=int, default=20)
+            command.add_argument("--learning-rate", type=float, default=0.001)
+            command.add_argument("--seed", type=int, default=0)
+        else:
+            command.add_argument("--model", required=True, metavar="DIR", help="saved model bundle")
+            command.add_argument(
+                "--split", choices=("train", "val", "test", "predict"),
+                default="test" if name == "evaluate" else "predict",
+                help="dataset split to process",
+            )
+
     for name in PLANNED_COMMANDS:
         commands.add_parser(
             name,
@@ -176,6 +210,35 @@ def _parser() -> argparse.ArgumentParser:
             allow_abbrev=False,
         )
     return parser
+
+
+def _ml_command(args: argparse.Namespace) -> int:
+    from .datasets import DatasetError
+    from .models import MLRuntimeError
+
+    try:
+        from .ml import evaluate_model, predict_model, train_model
+
+        common = {"device": args.device, "max_voxels": args.max_voxels}
+        if args.command == "train":
+            report = train_model(
+                args.prepared, args.output, backend=args.backend, epochs=args.epochs,
+                learning_rate=args.learning_rate, seed=args.seed, **common,
+            )
+        else:
+            operation = evaluate_model if args.command == "evaluate" else predict_model
+            report = operation(
+                args.prepared, args.model, args.output, split=args.split, **common,
+            )
+    except (DatasetError, MLRuntimeError, OSError, RuntimeError) as error:
+        print(f"rptu: error: {error}", file=sys.stderr)
+        return 2
+    if args.json:
+        print(json.dumps(report, indent=2, allow_nan=False))
+    else:
+        print(f"{args.command.capitalize()} complete: {args.output}")
+        print(json.dumps(report, indent=2, allow_nan=False))
+    return 0
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -191,6 +254,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _validate_config(args.config, args.json)
     if args.command in {"synthetic", "inspect", "preprocess"}:
         return _data_command(args)
+    if args.command in {"train", "evaluate", "predict"}:
+        return _ml_command(args)
     print(
         f"rptu: error: '{args.command}' is not implemented in this version. "
         "Use 'rptu --help' to see the available commands.",

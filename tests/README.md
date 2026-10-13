@@ -35,6 +35,16 @@ prepared bundles fail with a useful error rather than a traceback.
 
 The older tests directly under `tests/` reference incomplete research interfaces
 and external data. They are not part of the supported suite; `tests/test_test.py`
-is a placeholder. Run the two discovery commands above rather than broad test
-collection. Passing the CPU suite does not validate model training, inference,
-CUDA, or Kubernetes execution.
+is a placeholder. Use explicit discovery rather than broad test collection.
+
+For the model suite, install `.[ml]` and run:
+
+```sh
+python -m unittest discover -s tests/ml -v
+```
+
+This suite exercises real CPU training, model bundle save/load, original-point
+metrics and predictions, runtime selection, failure paths, and artifact integrity.
+Core tests remain separate and do not require ML dependencies. CI also builds a
+CPU container and runs the mounted-input/output workflow using
+`scripts/container-smoke.sh`. GPU execution is a separate hardware check.
