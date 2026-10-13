@@ -14,6 +14,20 @@ portable training and inference on CPU or CUDA. Both share the CLI, dataset
 contracts, and original point mapping. Saved models retain their architecture;
 WarpConvNet bundles require CUDA, while PyTorch bundles can move between devices.
 
+## Project lineage
+
+This public repository's default `main` branch retains the modern toolkit,
+including GPU/CPU workflows and checkpoint resume. The
+[`research-legacy` branch](https://github.com/ajavanma/RPTU_AI_Toolkit/tree/research-legacy)
+preserves the research-era code before modernization.
+
+Future feature development continues in
+[PointCloud Workflows](https://github.com/ajavanma/PointCloud-Workflows), an
+independent **private** successor with the full Git history. Owner-granted access
+is required. The RPTU commands and documentation below remain applicable to this
+repository. See [project lineage](docs/project-lineage.md) for the branch and
+release history.
+
 ## Install the GPU or CPU runtime
 
 For NVIDIA RTX 4070 systems, use Linux x86_64 and Python 3.11 with an NVIDIA driver
@@ -274,10 +288,11 @@ The original research also used Open3D:
 2. General dataset contracts, synthetic fixtures, and point/label alignment checks — implemented.
 3. WarpConvNet and CPU models with training, evaluation, and prediction — implemented.
 4. CPU/GPU containers, epoch checkpoints, training resume, and durable run attempts — implemented.
-5. Optional Helm Jobs, followed by Fleet deployment examples and measured GPU benchmarks.
+5. Further development moves to the private PointCloud Workflows successor.
 
-The new pipeline will establish its own data and model baselines. BIM export and
-multi-GPU training are future work. The [current documentation](https://rptu.gitbook.io/rptu-ai-toolkit/)
+Public-data recipes, larger-scene support, Helm Jobs, Fleet examples, benchmarks,
+BIM export, and multi-GPU training are possible successor work. They are not
+scheduled RPTU releases. The [current documentation](https://rptu.gitbook.io/rptu-ai-toolkit/)
 covers the package, dataset, and model workflow. It is a manually published
 snapshot; see [publication details](docs/gitbook-publication.md). The
 [original research documentation](https://arash.gitbook.io/rptu-ai-toolkit/) remains

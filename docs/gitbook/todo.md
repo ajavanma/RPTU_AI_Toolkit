@@ -14,7 +14,22 @@
 
 Use the [GPU and CPU quickstart](quickstart.md) for a complete run.
 
-## Next stages
+## Development transition
+
+The public RPTU repository's default `main` branch retains the available workflow
+above. Its [`research-legacy` branch](https://github.com/ajavanma/RPTU_AI_Toolkit/tree/research-legacy)
+preserves the code before modernization. Existing RPTU installation instructions,
+commands, and containers remain applicable to modern `main`.
+
+Future feature development moves to
+[PointCloud Workflows](https://github.com/ajavanma/PointCloud-Workflows), an
+independent **private** successor with the full Git history. Owner-granted access
+is required. This public documentation continues to describe the RPTU baseline;
+successor implementation and documentation are maintained separately.
+
+## Possible successor work
+
+These are candidate stages for PointCloud Workflows, not scheduled RPTU releases:
 
 1. Add a public-data recipe and spatial chunking for larger scenes.
 2. Publish versioned packages and images with schema compatibility guidance.
@@ -26,9 +41,11 @@ Training currently resumes at completed epoch boundaries using the original run
 settings. Step-level checkpoints, changing settings while resuming, scheduler
 state, and distributed storage coordination remain separate future extensions.
 
-Helm and Fleet will package the same CLI. Configuration reconciliation must not
+Helm and Fleet packaging should preserve explicit run submission. Configuration reconciliation must not
 silently launch training runs. A GPU host, cluster provisioner, or experiment server
 is not a required dependency of the local package.
 
-BIM export, multi-GPU training, and additional source formats remain follow-up
-work. The existing project history preserves the original research implementation.
+BIM export, multi-GPU training, and additional source formats are further
+successor candidates. The
+[project lineage record](https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/docs/project-lineage.md)
+describes the preserved research and modernization history.
