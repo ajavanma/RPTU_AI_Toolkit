@@ -111,6 +111,7 @@ class InstalledCliTests(unittest.TestCase):
             {
                 "config_validation": True,
                 "dataset_preparation": True,
+                "prepared_dataset_validation": True,
                 "ml_pipeline": False,
                 "gpu_runtime": "not_checked",
             },

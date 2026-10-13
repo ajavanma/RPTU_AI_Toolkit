@@ -32,6 +32,7 @@ def _doctor(as_json: bool) -> int:
         "capabilities": {
             "config_validation": True,
             "dataset_preparation": True,
+            "prepared_dataset_validation": True,
             "ml_pipeline": False,
             "gpu_runtime": "not_checked",
         },
@@ -46,6 +47,7 @@ def _doctor(as_json: bool) -> int:
             print(f"{name}: {version or 'not installed'}")
         print("Configuration validation: available")
         print("CPU dataset preparation: available (PLY requires the io extra)")
+        print("Prepared dataset validation: available")
         print("ML pipeline: not implemented")
         print("GPU runtime: not checked (package presence does not validate CUDA)")
     return 0
@@ -81,14 +83,25 @@ def _data_command(args: argparse.Namespace) -> int:
             report = {"manifest": str(path), "seed": args.seed}
             message = f"Synthetic dataset written: {path}"
         elif args.command == "inspect":
-            from .data_commands import inspect_dataset
+            from .data_commands import inspect_dataset, inspect_prepared_dataset
 
-            report = inspect_dataset(args.manifest)
-            message = (
-                f"Dataset is valid: {len(report['scenes'])} scenes, "
-                f"{report['total_points']} points, "
-                f"{report['total_invalid_points']} invalid rows to remove."
-            )
+            if args.prepared is not None:
+                report = inspect_prepared_dataset(args.prepared)
+                message = (
+                    f"Prepared dataset is valid: {len(report['scenes'])} scenes, "
+                    f"{report['total_input_points']} input points, "
+                    f"{report['total_valid_points']} valid points, "
+                    f"{report['total_invalid_points']} invalid rows removed, "
+                    f"{report['total_voxels']} voxels "
+                    f"(voxel size: {report['voxel_size']} {report['coordinate_unit']})."
+                )
+            else:
+                report = inspect_dataset(args.manifest)
+                message = (
+                    f"Dataset is valid: {len(report['scenes'])} scenes, "
+                    f"{report['total_points']} points, "
+                    f"{report['total_invalid_points']} invalid rows to remove."
+                )
         else:
             from .data_commands import preprocess_dataset
 
@@ -137,9 +150,11 @@ def _parser() -> argparse.ArgumentParser:
     synthetic.add_argument("--json", action="store_true", help="print the generated manifest path")
 
     inspect = commands.add_parser(
-        "inspect", help="validate a dataset manifest, checksums, and scene arrays", allow_abbrev=False
+        "inspect", help="validate a raw or prepared dataset and all scene arrays", allow_abbrev=False
     )
-    inspect.add_argument("--manifest", required=True, metavar="PATH", help="dataset manifest JSON")
+    inspect_source = inspect.add_mutually_exclusive_group(required=True)
+    inspect_source.add_argument("--manifest", metavar="PATH", help="raw dataset manifest JSON")
+    inspect_source.add_argument("--prepared", metavar="PATH", help="prepared dataset metadata JSON")
     inspect.add_argument("--json", action="store_true", help="print scene and label statistics")
 
     preprocess = commands.add_parser(

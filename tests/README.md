@@ -28,6 +28,11 @@ The clean wheel workflow requires only core dependencies, so PLY remains optiona
 The unit test installation includes the `io` extra to exercise the PLY adapter;
 PLY-specific tests skip when that extra is absent.
 
+Prepared-data tests cover the generated artifact roundtrip, relocation without
+raw inputs, dtype and mapping errors, checksum failures, and the exact voxel-label
+majority rule. CLI checks verify that every scene is inspected and malformed
+prepared bundles fail with a useful error rather than a traceback.
+
 The older tests directly under `tests/` reference incomplete research interfaces
 and external data. They are not part of the supported suite; `tests/test_test.py`
 is a placeholder. Run the two discovery commands above rather than broad test

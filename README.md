@@ -27,6 +27,7 @@ rptu config validate --config examples/config.yaml
 rptu synthetic --output runs/demo-data --seed 42
 rptu inspect --manifest runs/demo-data/manifest.json
 rptu preprocess --manifest runs/demo-data/manifest.json --output runs/demo-prepared --voxel-size 0.1
+rptu inspect --prepared runs/demo-prepared/prepared.json
 ```
 
 The package depends on PyYAML and NumPy. Installation does not install PyTorch,
@@ -63,6 +64,7 @@ prints help and exits; it no longer opens an interactive menu or imports PyTorch
 | `rptu config validate --config PATH [--json]` | Validate YAML and show the resolved configuration |
 | `rptu synthetic --output DIR [--seed N] [--json]` | Generate a reproducible four-scene dataset |
 | `rptu inspect --manifest PATH [--json]` | Validate the manifest, file checksums, arrays, and labels; report point counts |
+| `rptu inspect --prepared PATH [--json]` | Validate every prepared scene, mapping, and label target; report point and voxel counts |
 | `rptu preprocess --manifest PATH --output DIR --voxel-size SIZE [--json]` | Filter invalid rows and voxelize every scene on the CPU |
 | `rptu train`, `evaluate`, `predict`, `benchmark` | Reserved for later milestones; return an explicit not-implemented error |
 
@@ -99,8 +101,11 @@ evaluation. `prepared.json` records the schema, reductions, mappings, and checks
 
 See [the dataset and prepared-artifact contract](docs/datasets.md) for the complete
 schema, PLY property mapping, numeric limits, and reconstruction rules. The raw
-dataset manifest and prepared metadata are distinct formats; `inspect` accepts the
-raw dataset manifest.
+dataset manifest and prepared metadata are distinct formats: select exactly one
+of `inspect --manifest` and `inspect --prepared`. Prepared validation works after
+moving the bundle and without access to the original dataset. It verifies the
+saved artifacts' internal consistency; provenance hashes do not authenticate their
+publisher or prove the transformation against unavailable raw data.
 
 ## Configuration
 
@@ -188,8 +193,11 @@ python -m build
 5. Optional Helm Jobs, followed by Fleet deployment examples and measured GPU benchmarks.
 
 The new pipeline will establish its own data and model baselines. BIM export and
-multi-GPU training are future work. The [original research documentation](https://arash.gitbook.io/rptu-ai-toolkit/)
-is historical and does not describe the current package installation or CLI.
+multi-GPU training are future work. The [current documentation](https://rptu.gitbook.io/rptu-ai-toolkit/)
+covers the merged CPU package and dataset workflow. It is a manually published
+snapshot; see [publication details](docs/gitbook-publication.md). The
+[original research documentation](https://arash.gitbook.io/rptu-ai-toolkit/) remains
+historical and does not describe the current package installation or CLI.
 
 ## License
 
