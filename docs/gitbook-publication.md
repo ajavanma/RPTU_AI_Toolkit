@@ -19,10 +19,10 @@ from the documentation content.
 | Space ID | `ajFUWYe5yIaghJc56ivh` |
 | Public URL | <https://rptu.gitbook.io/rptu-ai-toolkit/> |
 | Publication mode | Manual Markdown snapshot; no Git Sync |
-| Documentation source baseline | GPU/CPU model workflow; see this file's Git history for the source revision |
+| Documentation source baseline | GPU/CPU workflow with checkpoint resume and durable training runs; see this file's Git history for the source revision |
 
 The [source pages](gitbook/README.md) describe the GPU/CPU toolkit, prepared-data
-workflow, model bundles, training, evaluation, and point-label prediction. Update
+workflow, model bundles, resumable training, evaluation, and point-label prediction. Update
 existing pages in a reviewed GitBook change request and keep the stable page slugs.
 Record the completed source merge and public verification in the modernization
 plan. A prior publication issue left public pages stale after reader change

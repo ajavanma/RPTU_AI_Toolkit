@@ -77,3 +77,9 @@ storage. GPU kernels and cluster execution are separate execution environments.
 Report defects through [GitHub issues](https://github.com/ajavanma/RPTU_AI_Toolkit/issues),
 including the command, toolkit version, Python version, and a small reproducible
 input where possible.
+
+Checkpoint tests compare interrupted-and-resumed CPU training with an uninterrupted
+run, including weights and loss history. They exercise optimizer and random-state
+recovery, incompatible settings, corruption, and completed retries. Run-output
+tests cover process contention, lock release after process death, interrupted
+publication, and preservation of completed artifacts.

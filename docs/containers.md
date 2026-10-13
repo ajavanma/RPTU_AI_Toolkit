@@ -45,7 +45,12 @@ host UID/GID so new files remain writable by your account. Use these locations:
 | `/cache` | Writable | PyTorch, Triton, CUDA, and WarpConvNet caches |
 
 Create mount directories before running. Each command's `--output` names a new
-directory underneath `/output`; existing results are never overwritten.
+directory underneath `/output`; existing results are never overwritten. Training
+with `--resume` reuses its run directory and restores the saved settings. Keep the
+complete writable run directory between container invocations. The checkpoint
+and locking contract targets local POSIX filesystems, including local bind
+mounts and local Docker volumes; it does not provide distributed coordination
+for NFS, object storage, or multiple copies of a run directory.
 
 For example, after preparing a dataset on the host:
 
@@ -64,6 +69,17 @@ docker run --rm --gpus all --read-only --tmpfs /tmp:rw,nosuid,size=256m \
 For CPU execution, use `rptu-ai-toolkit:cpu`, omit `--gpus all`, and set
 `--device cpu --backend torch`. The GPU image can also run the CPU fallback with
 those command options and without `--gpus all`.
+
+To recover an interrupted run, repeat the same mounts and image, replacing the
+training arguments with:
+
+```sh
+train --prepared /input/prepared.json --output /output/baseline --resume
+```
+
+Do not change the prepared inputs. Resume restores the latest complete epoch;
+an incomplete epoch is repeated. A completed retry checks its saved artifacts
+and returns the original report without training again.
 
 Evaluate the saved model on the test split:
 
@@ -90,7 +106,7 @@ sh scripts/container-smoke.sh rptu-ai-toolkit:cpu
 ```
 
 This creates synthetic data, preprocesses it, inspects the prepared contract,
-trains for two epochs, evaluates, and predicts. It uses a read-only container
+trains for two epochs, evaluates, predicts, and retries the completed training run. It uses a read-only container
 filesystem and explicit writable mounts, checks that repeated outputs are
 rejected without changing existing artifact hashes and input mounts cannot be
 written, checks report and checkpoint hashes and output ownership, then removes

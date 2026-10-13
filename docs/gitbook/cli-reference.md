@@ -14,7 +14,7 @@ without arguments it prints help instead of opening an interactive menu.
 | `rptu inspect --manifest PATH [--json]` | Validate the raw dataset manifest, checksums, scene arrays, and labels. |
 | `rptu inspect --prepared PATH [--json]` | Validate prepared metadata, every scene archive, and point/voxel consistency. |
 | `rptu preprocess --manifest PATH --output DIR --voxel-size SIZE [--json]` | Filter invalid rows and voxelize the dataset on the CPU. |
-| `rptu train --prepared PATH --output DIR` | Train WarpConvNet on CUDA or the PyTorch fallback. |
+| `rptu train --prepared PATH --output DIR [--resume]` | Start or resume WarpConvNet or PyTorch training. |
 | `rptu evaluate --prepared PATH --model DIR --output DIR` | Report original-point metrics for the selected split. |
 | `rptu predict --prepared PATH --model DIR --output DIR` | Export original dataset labels and point identities. |
 | `rptu benchmark` | Reserved for the benchmark workflow. |
@@ -79,7 +79,11 @@ Their default splits are `test` and `predict`, respectively; `--split` accepts
 nonignored labeled point; unlabeled scenes contribute no scored points.
 
 All three commands accept `--max-voxels` (100000 per scene), `--device`, and
-`--json`. Outputs require new directories. Errors do not silently overwrite prior
+`--json`. Outputs require new directories, except `train --resume`, which opens
+an existing training run. Resume restores omitted options from that run; explicit
+options must match. `--epochs` is the original total, not an additional count.
+Completed retries return the saved report after verifying its artifacts. A busy
+run, changed dataset, incompatible runtime, or corrupt checkpoint fails clearly. Errors do not silently overwrite prior
 models, trim scenes, or switch a saved model's architecture. See [training](train.md)
 and [test and evaluation](test.md).
 

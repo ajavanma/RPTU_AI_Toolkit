@@ -14,7 +14,10 @@ independent of the model backend. See the [dataset contract](dataset-contract.md
 
 The model API in `rptu_ai_toolkit.ml` exposes `train_model`, `evaluate_model`, and
 `predict_model`, with the same prepared inputs and new-output-directory rules as
-the CLI. ML dependencies load only when a model command executes.
+the CLI. ML dependencies load only when a model command executes. `train_model(...,
+resume=True)` resumes the same output run. Omitted training options reuse the
+recorded values; explicit changes are rejected. Completed retries return the
+verified saved report.
 
 Use the repository's
 [container guide](https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/docs/containers.md)

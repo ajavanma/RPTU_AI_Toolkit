@@ -3,6 +3,10 @@
 [![CPU package tests](https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+<p align="center">
+  <img src="media/rptu-logo.png" alt="RPTU university logo" width="490">
+</p>
+
 RPTU AI Toolkit is a GPU-first point-cloud segmentation toolkit for NVIDIA RTX 4070 systems, with a portable CPU fallback. It combines synthetic data generation, dataset validation, voxel preprocessing, training, evaluation, and prediction. The project originated in LiDAR segmentation and BIM research and provides reusable public dataset contracts and reproducible workflows.
 
 WarpConvNet MinkUNet18 provides the GPU model. A PyTorch voxel MLP provides
@@ -95,6 +99,21 @@ prediction exports original class IDs, point IDs, row positions, and validity
 masks. Every output path must be new. The default bound is 100,000 voxels per
 scene; `--max-voxels` changes it without silently truncating inputs.
 
+Training saves an initial checkpoint and one after every completed epoch. If a
+run is interrupted, resume it in the same output directory:
+
+```sh
+rptu train --prepared runs/demo-prepared/prepared.json --output runs/demo-model --resume
+```
+
+Resume restores the saved settings, model, Adam optimizer, and random state. It
+continues to the original total epoch count; changing the dataset or training
+settings requires a new run. A completed run returns its verified saved report
+without retraining. Checkpoints and attempt records survive failures, and an
+exclusive process lock prevents simultaneous writers to the same run directory.
+The run directory must be on a local POSIX filesystem, such as a Linux or macOS
+local disk; shared network storage is not a distributed locking service.
+
 See [training](docs/gitbook/train.md), [models](docs/gitbook/model.md), and
 [container execution](docs/containers.md) for full instructions.
 
@@ -110,7 +129,7 @@ See [training](docs/gitbook/train.md), [models](docs/gitbook/model.md), and
 | `rptu inspect --manifest PATH [--json]` | Validate the manifest, file checksums, arrays, and labels; report point counts |
 | `rptu inspect --prepared PATH [--json]` | Validate every prepared scene, mapping, and label target; report point and voxel counts |
 | `rptu preprocess --manifest PATH --output DIR --voxel-size SIZE [--json]` | Filter invalid rows and voxelize every scene on the CPU |
-| `rptu train --prepared PATH --output DIR` | Train a model using the selected backend and device |
+| `rptu train --prepared PATH --output DIR [--resume]` | Start a model run or resume its latest complete epoch |
 | `rptu evaluate --prepared PATH --model DIR --output DIR` | Evaluate a saved model at original point resolution |
 | `rptu predict --prepared PATH --model DIR --output DIR` | Export original dataset labels and point IDs |
 | `rptu benchmark` | Reserved for the benchmark workflow |
@@ -232,12 +251,29 @@ python -m pip install 'build>=1.2,<2'
 python -m build
 ```
 
+## Research background
+
+These images from the original LiDAR and BIM research show columns highlighted
+in green and doors highlighted in purple. They preserve the project's research
+context; the current synthetic demo produces its own data and model outputs.
+
+<p align="center">
+  <a href="media/column.png"><img src="media/column.png" alt="Historical building point cloud with columns highlighted in green" width="392"></a>
+  <a href="media/door.png"><img src="media/door.png" alt="Historical building point cloud with doors highlighted in purple" width="392"></a>
+</p>
+
+The original research also used Open3D:
+
+<p>
+  <img src="media/o3d.png" alt="Open3D logo" width="80" height="80">
+</p>
+
 ## Modernization direction
 
 1. Installable package, noninteractive CLI, and validated configuration — implemented.
 2. General dataset contracts, synthetic fixtures, and point/label alignment checks — implemented.
 3. WarpConvNet and CPU models with training, evaluation, and prediction — implemented.
-4. CPU/GPU containers — implemented; checkpoint resume and durable retries are next.
+4. CPU/GPU containers, epoch checkpoints, training resume, and durable run attempts — implemented.
 5. Optional Helm Jobs, followed by Fleet deployment examples and measured GPU benchmarks.
 
 The new pipeline will establish its own data and model baselines. BIM export and

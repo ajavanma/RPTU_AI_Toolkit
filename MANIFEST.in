@@ -5,6 +5,7 @@ include Dockerfile .dockerignore
 recursive-include requirements *.txt
 recursive-include scripts *.sh
 recursive-include docs *.md
+recursive-include media *.png
 recursive-include tests/unit *.py
 recursive-include tests/cli *.py
 recursive-include tests/ml *.py

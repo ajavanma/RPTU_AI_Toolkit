@@ -38,6 +38,13 @@ features, label mapping, voxel size, units, training settings, runtime versions,
 and weight checksum. Loading checks the contract and exact parameter structure.
 Keep both files together when moving a model.
 
+Resumable training state is separate from this inference format. Training runs
+also retain epoch checkpoints with model and Adam state, random state, and loss
+history. Move the complete run directory to retain resume capability; copying
+only the inference bundle is sufficient for evaluation and prediction. A saved
+training checkpoint resumes the same architecture and compatible runtime. See
+[training](train.md) for the run contract.
+
 The GPU installation profile pairs WarpConvNet 1.8.2 with PyTorch 2.10.0 and CUDA
 12.8 on Linux x86_64/Python 3.11. See the [quickstart](quickstart.md) for installation
 and the [training guide](train.md) for producing a new bundle.

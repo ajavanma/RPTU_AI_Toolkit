@@ -43,8 +43,11 @@ or create them.
   YAML merge overrides that duplicate a field are also rejected.
 
 Configuration validation does not initialize a model or check GPU availability.
-Model settings use `train` CLI arguments and are recorded in the saved model bundle;
-see the [training guide](train.md).
+Model settings use `train` CLI arguments and are recorded in the run specification
+and final model bundle. `train --resume` restores omitted options from the run;
+explicit options must match. The prepared manifest checksum, model architecture,
+and runtime compatibility are checked before continuing. See the
+[training guide](train.md).
 
 ## Historical configuration
 

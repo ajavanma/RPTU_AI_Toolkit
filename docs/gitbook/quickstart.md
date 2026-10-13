@@ -69,8 +69,18 @@ numeric prediction archives, respectively. Predictions use the original dataset
 class IDs and preserve source point IDs. Removed rows have the dataset's ignore
 label and a false validity flag. See [test and evaluation](test.md).
 
-All output directories must be new. Choose a fresh path to repeat a command;
-existing artifacts are never overwritten. The default limit is 100,000 voxels per
+New runs, evaluation, and prediction require new output directories. To resume
+an interrupted training run, keep its prepared dataset and output directory:
+
+```sh
+rptu train --prepared runs/demo-prepared/prepared.json --output runs/demo-model --resume
+```
+
+Omitted training settings come from the run. Resume continues to the original
+total epoch count, using the latest completed epoch. A completed run returns its
+verified saved report without retraining. Use a new output directory to change
+settings. See [training](train.md) for checkpoint and filesystem details.
+Existing successful artifacts are never overwritten. The default limit is 100,000 voxels per
 scene; `--max-voxels` changes it explicitly. A scene above the limit is rejected
 rather than truncated. Reduce voxel density or prepare smaller scene chunks to
 fit the available memory.
