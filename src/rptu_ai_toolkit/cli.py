@@ -10,7 +10,7 @@ from collections.abc import Sequence
 from . import __version__
 
 
-PLANNED_COMMANDS = ("inspect", "preprocess", "train", "evaluate", "predict", "benchmark")
+PLANNED_COMMANDS = ("train", "evaluate", "predict", "benchmark")
 
 
 def _package_version(name: str) -> str | None:
@@ -27,10 +27,11 @@ def _doctor(as_json: bool) -> int:
         "python": platform.python_version(),
         "platform": platform.platform(),
         "packages": {
-            name: _package_version(name) for name in ("PyYAML", "torch", "warpconvnet")
+            name: _package_version(name) for name in ("PyYAML", "numpy", "plyfile", "torch", "warpconvnet")
         },
         "capabilities": {
             "config_validation": True,
+            "dataset_preparation": True,
             "ml_pipeline": False,
             "gpu_runtime": "not_checked",
         },
@@ -44,6 +45,7 @@ def _doctor(as_json: bool) -> int:
         for name, version in report["packages"].items():
             print(f"{name}: {version or 'not installed'}")
         print("Configuration validation: available")
+        print("CPU dataset preparation: available (PLY requires the io extra)")
         print("ML pipeline: not implemented")
         print("GPU runtime: not checked (package presence does not validate CUDA)")
     return 0
@@ -68,10 +70,44 @@ def _validate_config(path: str, as_json: bool) -> int:
     return 0
 
 
+def _data_command(args: argparse.Namespace) -> int:
+    from .datasets import DatasetError
+
+    try:
+        if args.command == "synthetic":
+            from .synthetic import generate_synthetic
+
+            path = generate_synthetic(args.output, args.seed)
+            report = {"manifest": str(path), "seed": args.seed}
+            message = f"Synthetic dataset written: {path}"
+        elif args.command == "inspect":
+            from .data_commands import inspect_dataset
+
+            report = inspect_dataset(args.manifest)
+            message = (
+                f"Dataset is valid: {len(report['scenes'])} scenes, "
+                f"{report['total_points']} points, "
+                f"{report['total_invalid_points']} invalid rows to remove."
+            )
+        else:
+            from .data_commands import preprocess_dataset
+
+            report = preprocess_dataset(args.manifest, args.output, args.voxel_size)
+            message = f"Prepared {len(report['scenes'])} scenes in {args.output}"
+    except DatasetError as error:
+        print(f"rptu: error: {error}", file=sys.stderr)
+        return 2
+    if args.json:
+        print(json.dumps(report, indent=2, allow_nan=False))
+    else:
+        print(message)
+    return 0
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="rptu",
-        description="RPTU AI Toolkit: configuration and CLI foundation.",
+        description="RPTU AI Toolkit: CPU dataset validation and preparation.",
         epilog="ML pipeline commands are planned and are not implemented in this version.",
         allow_abbrev=False,
     )
@@ -92,6 +128,30 @@ def _parser() -> argparse.ArgumentParser:
     )
     validate.add_argument("--config", required=True, metavar="PATH", help="YAML configuration file")
     validate.add_argument("--json", action="store_true", help="print the resolved configuration")
+
+    synthetic = commands.add_parser(
+        "synthetic", help="generate a small seeded CPU demonstration dataset", allow_abbrev=False
+    )
+    synthetic.add_argument("--output", required=True, metavar="DIR", help="new output directory")
+    synthetic.add_argument("--seed", type=int, default=0, help="integer seed in 0..4294967295")
+    synthetic.add_argument("--json", action="store_true", help="print the generated manifest path")
+
+    inspect = commands.add_parser(
+        "inspect", help="validate a dataset manifest, checksums, and scene arrays", allow_abbrev=False
+    )
+    inspect.add_argument("--manifest", required=True, metavar="PATH", help="dataset manifest JSON")
+    inspect.add_argument("--json", action="store_true", help="print scene and label statistics")
+
+    preprocess = commands.add_parser(
+        "preprocess", help="filter and voxelize a dataset on the CPU", allow_abbrev=False
+    )
+    preprocess.add_argument("--manifest", required=True, metavar="PATH", help="dataset manifest JSON")
+    preprocess.add_argument("--output", required=True, metavar="DIR", help="new output directory")
+    preprocess.add_argument(
+        "--voxel-size", type=float, required=True,
+        help="positive voxel edge length in the manifest's coordinate unit",
+    )
+    preprocess.add_argument("--json", action="store_true", help="print the prepared dataset metadata")
 
     for name in PLANNED_COMMANDS:
         commands.add_parser(
@@ -114,9 +174,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _doctor(args.json)
     if args.command == "config":
         return _validate_config(args.config, args.json)
+    if args.command in {"synthetic", "inspect", "preprocess"}:
+        return _data_command(args)
     print(
         f"rptu: error: '{args.command}' is not implemented in this version. "
-        "Use 'rptu doctor' or 'rptu config validate --config PATH' for the available commands.",
+        "Use 'rptu --help' to see the available commands.",
         file=sys.stderr,
     )
     return 2
