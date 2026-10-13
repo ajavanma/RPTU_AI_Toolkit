@@ -18,14 +18,19 @@ lightning_logs/
 .vscode/
 *.code-workspace
 venv/
+.venv/
 .idea/
 
 # Build output
+build/
+dist/
+*.egg-info/
 *.app
 *.ipa
 *.dmg
 
 # Project specific
+runs/
 .ply
 .pcd
 

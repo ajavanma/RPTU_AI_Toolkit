@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rptu-ai-toolkit"
+dynamic = ["version"]
+description = "Configuration and CLI foundation for reproducible point-cloud segmentation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Arash Javanmardi"}]
+dependencies = ["PyYAML>=6.0.1,<7"]
+
+[project.optional-dependencies]
+test = ["tqdm==4.66.1"]
+
+[project.scripts]
+rptu = "rptu_ai_toolkit.cli:main"
+
+[project.urls]
+Repository = "https://github.com/ajavanma/RPTU_AI_Toolkit"
+Issues = "https://github.com/ajavanma/RPTU_AI_Toolkit/issues"
+
+[dependency-groups]
+dev = ["build>=1.2,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["rptu_ai_toolkit*"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+version = {attr = "rptu_ai_toolkit._version.__version__"}

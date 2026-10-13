@@ -1,4 +1,4 @@
-name: CPU unit tests
+name: CPU package tests
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: ['3.9', '3.12']
+        python-version: ['3.11', '3.12']
 
     steps:
       - uses: actions/checkout@v7
@@ -22,8 +22,22 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install test dependencies
-        run: python -m pip install -r requirements-test.txt
+      - name: Install package and test dependencies
+        run: python -m pip install -r requirements-test.txt 'build>=1.2,<2'
 
       - name: Run CPU unit tests
         run: python -m unittest discover -s tests/unit -v
+
+      - name: Run CLI acceptance tests
+        run: python -m unittest discover -s tests/cli -v
+
+      - name: Build source distribution and wheel
+        run: python -m build
+
+      - name: Test wheel in a clean environment outside the checkout
+        run: |
+          python -m venv "$RUNNER_TEMP/rptu-wheel"
+          "$RUNNER_TEMP/rptu-wheel/bin/python" -m pip install dist/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/rptu-wheel/bin/python" -m unittest discover -s "$GITHUB_WORKSPACE/tests/cli" -v
+          "$RUNNER_TEMP/rptu-wheel/bin/rptu" doctor --json

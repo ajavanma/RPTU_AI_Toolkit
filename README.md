@@ -1,251 +1,151 @@
-<a name="readme-top"></a>
+# RPTU AI Toolkit
+
+[![CPU package tests](https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+RPTU AI Toolkit is being modernized into a reproducible point-cloud semantic
+segmentation toolkit using WarpConvNet. It originated in research on LiDAR
+segmentation and BIM workflows.
+
+**This development version provides the installable package, environment
+diagnostics, and validated configuration.** Dataset processing, training,
+evaluation, prediction, and benchmarking are not implemented in the new CLI yet.
+The repository's older research scripts are incomplete and are not a supported
+end-to-end workflow. No original datasets or trained model artifacts are included.
+
+## Install the CPU foundation
+
+Use Python 3.11 or newer. From the repository root:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
+rptu --help
+rptu doctor
+rptu config validate --config examples/config.yaml
+```
+
+The package depends only on PyYAML. Installation does not install PyTorch,
+WarpConvNet, MinkowskiEngine, Open3D, or CUDA. Python 3.11 and 3.12 are covered by
+the CPU CI matrix. GPU runtime support will be established in a separate milestone.
+
+The module entry point is equivalent to the installed command:
+
+```sh
+python -m rptu_ai_toolkit doctor --json
+```
+
+`python src/main.py` now delegates to the new CLI. Running it without arguments
+prints help and exits; it no longer opens an interactive menu or imports PyTorch.
+
+## Commands
+
+| Command | Behavior |
+| --- | --- |
+| `rptu --help` | Show commands and their availability |
+| `rptu --version` | Show the package version |
+| `rptu doctor [--json]` | Report Python, platform, package metadata, and supported capabilities |
+| `rptu config validate --config PATH [--json]` | Validate YAML and show the resolved configuration |
+| `rptu inspect`, `preprocess`, `train`, `evaluate`, `predict`, `benchmark` | Reserved for later milestones; return an explicit not-implemented error |
+
+Diagnostics inspect installed package metadata without importing ML libraries.
+An installed WarpConvNet or PyTorch distribution does not establish that CUDA
+works. `doctor` reports `gpu_runtime: "not_checked"` and `ml_pipeline: false`.
+Its successful exit means diagnostics completed, not that GPU execution passed.
+
+Successful commands and help exit with status `0`. Invalid arguments,
+configuration errors, and unimplemented commands exit with status `2`; error
+messages go to stderr. `--json` emits JSON on stdout on success.
+
+## Configuration
+
+The new schema is deliberately limited to application paths and runtime settings.
+Model and dataset schemas will be added with their implementations.
+
+```yaml
+schema_version: 1
+paths:
+  input_dir: ../data
+  output_dir: ../runs
+runtime:
+  seed: 0
+  num_workers: 0
+```
+
+See [examples/config.yaml](examples/config.yaml). In that file, `../data` resolves
+to the repository's `data` directory, regardless of the command's working directory.
+
+- `schema_version` must be integer `1`.
+- `paths.input_dir` and `paths.output_dir` are required nonempty strings. Relative
+  paths resolve against the configuration file's directory. Absolute paths remain
+  absolute; `~` is expanded. Environment variables such as `$DATA_DIR` are literal
+  text and are not expanded.
+- Input and output must resolve to different directories.
+- `runtime` and either of its fields can be omitted. `seed` defaults to `0` and
+  must be an integer from `0` through `4294967295`. `num_workers` defaults to `0`
+  and must be a nonnegative integer.
+- Unknown fields, duplicate YAML keys, and booleans used as integers are rejected.
+  YAML merge overrides that duplicate a field are also rejected.
+
+Validation checks configuration structure. It does not require datasets to exist,
+create directories, or initialize GPU libraries. Use JSON output to inspect
+resolved paths and defaults:
+
+```sh
+rptu config validate --config examples/config.yaml --json
+```
+
+The old flat [config/config.yaml](config/config.yaml) belongs to the historical
+scripts and is not accepted by the new CLI. Start with the new example rather
+than renaming the old file. Historical `requirements.txt` is not the package's
+installation specification; use `pyproject.toml` through pip or uv.
 
-<div align="center">
-  
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/releases/tag/v0.0.1" style="display: inline-block;">
-    <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="version">
-  </a>
-  
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml" style="display: inline-block;">
-    <img src="https://github.com/ajavanma/RPTU_AI_Toolkit/actions/workflows/tests.yml/badge.svg?branch=main" alt="CPU unit tests">
-  </a>
-  
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/dev/LICENSE" style="display: inline-block;">
-    <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
-  </a>
-  
-</div>
+## Development and tests
 
+For an editable install and the existing helper tests:
 
+```sh
+python -m pip install -r requirements-test.txt
+python -m unittest discover -s tests/unit -v
+python -m unittest discover -s tests/cli -v
+```
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/rptu-logo.png" alt="Logo" width="490" height="275">
-  </a>
+Alternatively, use the committed uv lockfile:
 
-  <h3 align="center">RPTU-AI-Toolkit</h3>
+```sh
+uv sync --locked --extra test
+uv run --locked --extra test python -m unittest discover -s tests/unit -v
+uv run --locked --extra test python -m unittest discover -s tests/cli -v
+```
 
-  <p align="center">
-    A toolkit for preprocessing, training and inference
-    <br />
-    <a href="https://arash.gitbook.io/rptu-ai-toolkit/"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/issues/new">Report Bug or Request Feature</a>
-  </p>
-</div>
+The lockfile covers the CPU package and development environment. A GPU dependency
+profile will be added after validating a specific WarpConvNet/PyTorch/CUDA combination.
 
+CI runs the CPU unit and CLI tests, builds a source distribution and a wheel,
+and exercises the wheel in a separate environment from outside the checkout.
+The CLI tests prevent imports of ML dependencies. See [tests/README.md](tests/README.md)
+for the distinction between supported tests and historical research tests.
 
+To build locally:
 
-<!-- TABLE OF CONTENTS -->
+```sh
+python -m pip install 'build>=1.2,<2'
+python -m build
+```
 
-## Table of Contents
+## Modernization direction
 
-1. [About The Project](#about-the-project)
-    * [Built With](#built-with)
-2. [Installation](#installation)
-3. [Features](#features)
-4. [Requirements](#requirements)
-5. [Program structure](#program-structure)
-    * [File hierarchy](#file-hierarchy)
-6. [Usage](#usage)
-7. [Roadmap](#roadmap)
-8. [Useful links](#Useful-links-and-other-projects-using-Minkowski-Engine)
-9. [Contact](#contact)
-10. [License](#license)
+1. Installable package, noninteractive CLI, and validated configuration — this change.
+2. General dataset contracts, synthetic fixtures, and point/label alignment checks.
+3. A fresh WarpConvNet model with training, evaluation, checkpoint resume, and prediction.
+4. Reproducible containers and durable run outputs.
+5. Optional Helm Jobs, followed by Fleet deployment examples and measured GPU benchmarks.
 
+The new pipeline will establish its own data and model baselines. BIM export and
+multi-GPU training are future work. The [original research documentation](https://arash.gitbook.io/rptu-ai-toolkit/)
+is historical and does not describe the current package installation or CLI.
 
-
-## About The Project
-
-This is a toolkit to train a ML model for semantic segmentation of point clouds.  
-
-It covers preprocessing, training and inference, and in this repository it is used to make BIM models based on [IfcOpenShell](https://ifcopenshell.org/) standard from lidar scans.  
-
-<div align="center">
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/column.png" alt="Logo" width="392" height="220">
-  </a><a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main" style="display: inline-block;">
-    <img src="media/door.png" alt="Logo" width="392" height="220">
-  </a>
-</div>
-
-
-
-
-### Built With
-
-
-[![PyTorch][PyTorch]][PyTorch-url]
-
-[![MinkowskiEngine][MinkowskiEngine]][MinkowskiEngine-url]
-
-  <a href="https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main">
-    <img src="media/o3d.png" alt="Logo" width="80" height="80">
-  </a>
-
-
-
-## Installation
-
-1. You can install the Minkowski Engine with `pip`, with anaconda, or on the system directly.  
-- [PIP](https://github.com/NVIDIA/MinkowskiEngine#pip) installation
-- [Conda](https://github.com/NVIDIA/MinkowskiEngine#anaconda) installation
-- [Python](https://github.com/NVIDIA/MinkowskiEngine#system-python) installation
-- [Docker](https://github.com/NVIDIA/MinkowskiEngine#docker) installation
-
-
-2. Install Poetry:
-   ```sh
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
-
-3. Install project dependencies:
-poetry install  
-
-4. Set config parameters in config/config.yaml  
-
-5. poetry run python src/main.py  
-
-
-## Features
-
-- Unlimited high-dimensional sparse tensor support
-- All standard neural network layers (Convolution, Pooling, Broadcast, etc.)
-- Dynamic computation graph
-- Custom kernel shapes
-- Multi-GPU training
-- Multi-threaded kernel map
-- Multi-threaded compilation
-- Highly-optimized GPU kernels
-
-
-## Requirements
-
-- Ubuntu >= 14.04
-- CUDA >= 10.1.243 and **the same CUDA version used for pytorch** (e.g. if you use conda cudatoolkit=11.1, use CUDA=11.1 for MinkowskiEngine compilation)
-- pytorch >= 1.7 To specify CUDA version, please use conda for installation. You must match the CUDA version pytorch uses and CUDA version used for Minkowski Engine installation. `conda install -y -c nvidia -c pytorch pytorch=1.8.1 cudatoolkit=10.2`)
-- python >= 3.6
-- ninja (for installation)
-- GCC >= 7.4.0
-
-
-## Program structure
-Data Preparation
-1. Raw Data Analysis:  
-Generate report of each asc and pcd file, check for skewed distribution.
-
-2. Preprocessing:  
-Data Preparation: Feature selection, data cleansing, transforming, outlier removal, scaling (normalization/standardization).
-Feature Engineering: Imputation (managing missing data), one-hot encoding of categorical features.
-
-3. Training:  
-A classification model will be trained based on a CNN architecture
-
-4. Inference:  
-Using Blender's python wrapper a BIM-Model will be generated from the trained ML-Model
-
-5. Reports:  
-Training and Evaluation  
-Iteration (hyperparameter tuning)  
-Test and Verification  
-Visualizing  
-
-
-
-### File hierarchy
-data/     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp;   &nbsp;   # Raw and processed data (pcd, asc, ply), mapping dictionaries (yaml)  
-logs/   
-models/   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;       # Trained models  
-notebooks/  &nbsp;   &nbsp;   &nbsp;     # Jupyter notebooks for exploration and visualization (sanity check of raw and processed data)  
-tests/  
-src/      
-| ── config/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── config.yaml  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── preprocessing.yaml  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── training.yaml  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── inference.yaml  
-| ── data/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── preprocessing.py  
-| ── models/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── model.bin  
-| ── training/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |── train.py  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── evaluate.py  
-| ── inference/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── infer.py  
-| ── utils/  
-│     &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  └── utils.py  
-└ ── main.py  
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-
-_Please refer to the [Documentation](https://arash.gitbook.io/rptu-ai-toolkit/)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add logs
-- [ ] Add Demo
-- [ ] Add Notebooks
-- [ ] Multi-preprocessing Support
-    - [x] cpu
-    - [x] gpu
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Useful links and other projects using Minkowski Engine
-
-* [Point clouds][Point-clouds]
-* [Open3d][open3d-url]
-* [Minkowski Engine][MinkowskiEngine-url]
-- Segmentation: [3D and 4D Spatio-Temporal Semantic Segmentation, CVPR'19](https://github.com/chrischoy/SpatioTemporalSegmentation)
-- Representation Learning: [Fully Convolutional Geometric Features, ICCV'19](https://github.com/chrischoy/FCGF)
-- 3D Registration: [Learning multiview 3D point cloud registration, CVPR'20](https://arxiv.org/abs/2001.05119)
-- 3D Registration: [Deep Global Registration, CVPR'20](https://arxiv.org/abs/2004.11540)
-- Pattern Recognition: [High-Dimensional Convolutional Networks for Geometric Pattern Recognition, CVPR'20](https://arxiv.org/abs/2005.08144)
-- Detection: [Generative Sparse Detection Networks for 3D Single-shot Object Detection, ECCV'20](https://arxiv.org/abs/2006.12356)
-- Image matching: [Sparse Neighbourhood Consensus Networks, ECCV'20](https://www.di.ens.fr/willow/research/sparse-ncnet/)
-
-
-
-<!-- CONTACT -->
-## Contact
-
-
-[![Contact](https://img.shields.io/badge/Linked-In-blue)](https://www.linkedin.com/in/arash-javanmardi-9567b9167/)
-
-
-<!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/ajavanma/RPTU_AI_Toolkit/blob/main/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/arash-javanmardi-9567b9167/
-[product-screenshot]: images/screenshot.png
-[PyTorch]: https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white
-[PyTorch-url]: https://pytorch.org/
-[MinkowskiEngine]: https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white
-[MinkowskiEngine-url]: https://github.com/NVIDIA/MinkowskiEngine
-[open3d-url]: https://www.open3d.org/
-[Point-clouds]: https://en.wikipedia.org/wiki/Point_cloud
-
-
-
+MIT. See [LICENSE](LICENSE).

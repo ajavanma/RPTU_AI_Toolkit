@@ -1,0 +1,13 @@
+include examples/config.yaml
+include requirements-test.txt uv.lock
+include tests/README.md
+recursive-include tests/unit *.py
+recursive-include tests/cli *.py
+exclude tests/test*.py
+
+# Retain the source entry point and helper modules exercised by the test suites.
+# Package discovery still installs only rptu_ai_toolkit into the wheel.
+include src/main.py
+include config/config.py config/config.yaml
+include utils/file_matching.py
+include src/data/preprocessing_results.py src/data/preprocessing_workers.py
