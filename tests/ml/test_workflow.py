@@ -174,7 +174,8 @@ class TestModelWorkflow(unittest.TestCase):
         model = self.copy_model()
         original = json.loads((model / "bundle.json").read_text())
         weights = model / "weights.safetensors"
-        state = load_file(str(weights))
+        # Detach from safetensors' mmap before deliberately truncating the file.
+        state = {name: value.clone() for name, value in load_file(str(weights)).items()}
         weights.write_bytes(b"not a tensor archive")
         with self.assertRaisesRegex(MLRuntimeError, "checksum mismatch"):
             predict_model(self.manifest, model, self.directory / "no-output", device="cpu")
